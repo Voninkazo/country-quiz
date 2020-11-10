@@ -33869,6 +33869,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function App() {
   const [countries, setCountries] = (0, _react.useState)([]);
+  const [showScore, setShowScore] = (0, _react.useState)(false);
+  const [showNextQuestion, setShowNextQuestion] = (0, _react.useState)(false);
+  const [score, setScore] = (0, _react.useState)(0);
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -33876,6 +33879,10 @@ function App() {
     setCountries(data);
     console.log(data);
   };
+
+  function nextQuestion() {
+    fetchCountries();
+  }
 
   (0, _react.useEffect)(() => {
     fetchCountries();
@@ -33885,7 +33892,29 @@ function App() {
   const secondRandomNum = Math.floor(Math.random() * countries.length);
   const thirdRandomNum = Math.floor(Math.random() * countries.length);
   const fourthRandomNum = Math.floor(Math.random() * countries.length);
-  const randomNumberArr = [firstRandomNum, secondRandomNum, thirdRandomNum, fourthRandomNum];
+  const randomNumberArr = [firstRandomNum, thirdRandomNum, secondRandomNum, fourthRandomNum];
+  let correctAnswer;
+
+  function checkCorrectAnswer(e) {
+    console.log(e.target.value);
+
+    if (countries[firstRandomNum].name === e.target.value) {
+      console.log("correct");
+      setShowNextQuestion(true);
+      setScore(prev => prev + 1);
+    } else {
+      setShowScore(true);
+      setShowNextQuestion(false);
+      const theRightAnswerIdex = randomNumberArr.find(index => {
+        return countries[index].name === countries[firstRandomNum].name;
+      });
+      console.log("incorrect");
+      console.log(theRightAnswerIdex);
+      correctAnswer = countries[theRightAnswerIdex].name;
+      console.log(correctAnswer);
+    }
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
   }, /*#__PURE__*/_react.default.createElement("p", {
@@ -33895,9 +33924,16 @@ function App() {
     key: countries[country].name
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn-country",
-    value: countries[randomNumberArr[1]].name
-  }, countries[country].name)))));
+    className: "btn-country ",
+    value: countries[country].name,
+    onClick: checkCorrectAnswer
+  }, countries[country].name)))), showNextQuestion && /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn-next",
+    onClick: nextQuestion
+  }, "Next"), showScore && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Score: ", score), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, "Try again")));
 }
 
 var _default = App;
