@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
 
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
         console.log(data);
     }
 
-
     useEffect(() => {
         fetchCountries();
     }, [])
@@ -24,18 +22,15 @@ function App() {
     const randomNumberArr = [firstRandomNum, secondRandomNum, thirdRandomNum, fourthRandomNum]
 
     return (
-        <div>
-            <h1>Country quiz</h1>
-            <p>What is the capital of {countries[firstRandomNum].name}?</p>
+        <div className="quiz-container">
+            <p className="question-quiz"> <em>{countries[firstRandomNum].capital}</em> is the capital of ?</p>
             <div>
-            {randomNumberArr.map(country => (
-            <Link 
-                    to={`/capital/${countries[firstRandomNum].capital}`} 
-                    key={countries[country].name}>
-                    <button type="button" value={countries[randomNumberArr[1]].name}>
+                {randomNumberArr.map(country => (
+                <div className="btn-container" key={countries[country].name}>
+                    <button type="button" className="btn-country" value={countries[randomNumberArr[1]].name}>
                         {countries[country].name}
-            </button>
-            </Link>
+                    </button>
+                </div>
       ))}
             </div>
         </div>
