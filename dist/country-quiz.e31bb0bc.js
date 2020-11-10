@@ -33870,8 +33870,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function App() {
   const [countries, setCountries] = (0, _react.useState)([]);
   const [showScore, setShowScore] = (0, _react.useState)(false);
-  const [showNextQuestion, setShowNextQuestion] = (0, _react.useState)(false);
   const [score, setScore] = (0, _react.useState)(0);
+  const [bgcolor, setBgcolor] = (0, _react.useState)({
+    backgroundColor: "white"
+  });
+  const [iseAnswered, setIsAnswered] = (0, _react.useState)(false);
+  const [iseCorrect, setIsCorrect] = (0, _react.useState)(false);
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -33881,37 +33885,46 @@ function App() {
   };
 
   function nextQuestion() {
-    fetchCountries();
+    if (iseCorrect) {
+      fetchCountries();
+    } else {
+      setShowScore(true);
+    }
   }
 
   (0, _react.useEffect)(() => {
     fetchCountries();
   }, []);
-  if (!countries.length) return null;
   const firstRandomNum = Math.floor(Math.random() * countries.length);
   const secondRandomNum = Math.floor(Math.random() * countries.length);
   const thirdRandomNum = Math.floor(Math.random() * countries.length);
   const fourthRandomNum = Math.floor(Math.random() * countries.length);
-  const randomNumberArr = [firstRandomNum, thirdRandomNum, secondRandomNum, fourthRandomNum];
-  let correctAnswer;
+  if (!countries.length) return null; // sort it by alaphabet so that it's going to be more difficult to guess
+
+  const randomNumberArr = [firstRandomNum, fourthRandomNum, secondRandomNum, thirdRandomNum];
 
   function checkCorrectAnswer(e) {
-    console.log(e.target.value);
+    e.preventDefault();
+    setIsAnswered(true);
 
-    if (countries[firstRandomNum].name === e.target.value) {
+    if (countries[firstRandomNum].name === e.target.dataset.value) {
       console.log("correct");
-      setShowNextQuestion(true);
+      setIsCorrect(true);
       setScore(prev => prev + 1);
+      setBgcolor({
+        backgroundColor: "green"
+      });
     } else {
-      setShowScore(true);
-      setShowNextQuestion(false);
       const theRightAnswerIdex = randomNumberArr.find(index => {
         return countries[index].name === countries[firstRandomNum].name;
       });
       console.log("incorrect");
-      console.log(theRightAnswerIdex);
-      correctAnswer = countries[theRightAnswerIdex].name;
+      const correctAnswer = countries[theRightAnswerIdex].name;
       console.log(correctAnswer);
+      setIsCorrect(false);
+      setBgcolor({
+        backgroundColor: "red"
+      });
     }
   }
 
@@ -33924,10 +33937,11 @@ function App() {
     key: countries[country].name
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn-country ",
-    value: countries[country].name,
+    className: "btn-country",
+    "data-value": countries[country].name,
+    style: bgcolor,
     onClick: checkCorrectAnswer
-  }, countries[country].name)))), showNextQuestion && /*#__PURE__*/_react.default.createElement("button", {
+  }, countries[country].name)))), iseAnswered && /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn-next",
     onClick: nextQuestion

@@ -4,8 +4,10 @@ import React, { useEffect, useState } from 'react';
 function App() {
     const [countries,setCountries] = useState([]);
     const [showScore,setShowScore] = useState(false);
-    const [showNextQuestion,setShowNextQuestion] = useState(false);
     const [score,setScore] = useState(0);
+    const [bgcolor,setBgcolor] = useState({backgroundColor: "white"});
+    const [iseAnswered,setIsAnswered] = useState(false);
+    const [iseCorrect,setIsCorrect] = useState(false);
 
     const fetchCountries = async() => {
         const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -14,38 +16,47 @@ function App() {
         console.log(data);
     }
 
-    function nextQuestion() {
-        fetchCountries();
-    }
+     function nextQuestion() {
+        if(iseCorrect) {
+            fetchCountries();
+        }
+        else {
+            setShowScore(true);
+        }
+     }
 
     useEffect(() => {
         fetchCountries();
     }, [])
 
-    if (!countries.length) return null
     const firstRandomNum = Math.floor(Math.random() * countries.length)
     const secondRandomNum = Math.floor(Math.random() * countries.length)
     const thirdRandomNum = Math.floor(Math.random() * countries.length)
     const fourthRandomNum = Math.floor(Math.random() * countries.length)
-    const randomNumberArr = [firstRandomNum,thirdRandomNum, secondRandomNum, fourthRandomNum]
+    if (!countries.length) return null
 
-  let correctAnswer;
+    // sort it by alaphabet so that it's going to be more difficult to guess
+    const randomNumberArr = [firstRandomNum,fourthRandomNum, secondRandomNum,thirdRandomNum]
+
     function checkCorrectAnswer(e) {
-        console.log(e.target.value);
-        if((countries[firstRandomNum].name) === (e.target.value)) {
+        e.preventDefault();
+        setIsAnswered(true)
+
+        if((countries[firstRandomNum].name) === e.target.dataset.value ){
             console.log("correct")
-            setShowNextQuestion(true);
+            setIsCorrect(true)
             setScore(prev => prev + 1);
-        } else {
-            setShowScore(true);
-            setShowNextQuestion(false);
+            setBgcolor({backgroundColor: "green"});
+        } 
+        else {
             const theRightAnswerIdex = randomNumberArr.find(index => {
                 return countries[index].name === countries[firstRandomNum].name
             })
             console.log("incorrect")
-            console.log(theRightAnswerIdex);
-            correctAnswer = countries[theRightAnswerIdex].name;
+            const correctAnswer = countries[theRightAnswerIdex].name;
             console.log(correctAnswer);
+            setIsCorrect(false)
+            setBgcolor({backgroundColor: "red"})
         }
     }
 
@@ -57,15 +68,17 @@ function App() {
                 <div className="btn-container" key={countries[country].name}>
                     <button 
                     type="button" 
-                    className= "btn-country " 
-                    value={countries[country].name} 
-                    onClick={checkCorrectAnswer}>
+                    className= "btn-country" 
+                    data-value={countries[country].name} 
+                    style={bgcolor}
+                    onClick={checkCorrectAnswer}
+                    >
                     {countries[country].name}
                     </button>
                 </div>
                 ))}
             </div>
-            {showNextQuestion &&
+            {iseAnswered && 
                 <button type="button" className="btn-next" onClick={nextQuestion}>Next</button>
             }
             {
