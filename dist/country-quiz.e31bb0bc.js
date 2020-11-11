@@ -33853,7 +33853,103 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"App.js":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"Components/Answers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Answers({
+  disbledFieldset,
+  randomOptions,
+  bgcolor,
+  checkCorrectAnswer
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", {
+    disabled: disbledFieldset
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onClick: e => checkCorrectAnswer(e),
+    className: "btn-container"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "btn-country",
+    "data-value": randomOptions[0]
+  }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+    className: "btn-country",
+    "data-value": randomOptions[1]
+  }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+    className: "btn-country",
+    "data-value": randomOptions[2]
+  }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+    className: "btn-country",
+    "data-value": randomOptions[3]
+  }, randomOptions[3]))));
+}
+
+var _default = Answers;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Questions.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Questions({
+  questionRandomNum,
+  randomContry
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, randomContry.capital, " is the capital of ?") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomContry.flag,
+    className: "flag"
+  }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")));
+}
+
+var _default = Questions;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NextButton({
+  clickNext,
+  isCorrect,
+  getRandomCountry,
+  score
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: clickNext
+  }, "Next"), isCorrect === true ? getRandomCountry : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/score"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Score:", score)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/score"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Try again")))));
+}
+
+var _default = NextButton;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33863,51 +33959,71 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Answers = _interopRequireDefault(require("./Components/Answers"));
+
+var _Questions = _interopRequireDefault(require("./Components/Questions"));
+
+var _NextButton = _interopRequireDefault(require("./Components/NextButton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function App() {
   const [countries, setCountries] = (0, _react.useState)([]);
-  const [showScore, setShowScore] = (0, _react.useState)(false);
   const [score, setScore] = (0, _react.useState)(0);
   const [bgcolor, setBgcolor] = (0, _react.useState)({
     backgroundColor: "white"
   });
-  const [iseAnswered, setIsAnswered] = (0, _react.useState)(false);
-  const [iseCorrect, setIsCorrect] = (0, _react.useState)(false);
+  const [isCorrect, setIsCorrect] = (0, _react.useState)(false);
+  const [randomContry, setRoandomCountry] = (0, _react.useState)({});
+  const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
+  const [disbledFieldset, setDisabledFieldset] = (0, _react.useState)(false);
+  const [showNextBtn, setShowNextBtn] = (0, _react.useState)(false);
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
     const data = await info.json();
     setCountries(data);
+    getRandomCountry();
     console.log(data);
   };
 
-  function nextQuestion() {
-    if (iseCorrect) {
-      fetchCountries();
+  function getRandomCountry() {
+    if (!countries.length) return null;
+    const randomNum = countries[Math.floor(Math.random() * countries.length)];
+    const firstRandomNum = countries[Math.floor(Math.random() * countries.length)];
+    const secondRandomNum = countries[Math.floor(Math.random() * countries.length)];
+    const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)];
+    const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)];
+    const randomOptions = [randomNum.name, firstRandomNum.name, secondRandomNum.name, thirdRandomNum.name, fourthRandomNum.name];
+    setRoandomCountry(randomNum);
+    setRandomOptions(randomOptions);
+    setIsCorrect('');
+    setDisabledFieldset(false);
+    setShowNextBtn(false);
+  }
+
+  function clickNext() {
+    if (isCorrect) {
+      getRandomCountry();
     } else {
-      setShowScore(true);
+      console.log('try again');
     }
   }
 
-  (0, _react.useEffect)(() => {
-    fetchCountries();
-  }, []);
-  const firstRandomNum = Math.floor(Math.random() * countries.length);
-  const secondRandomNum = Math.floor(Math.random() * countries.length);
-  const thirdRandomNum = Math.floor(Math.random() * countries.length);
-  const fourthRandomNum = Math.floor(Math.random() * countries.length);
-  if (!countries.length) return null; // sort it by alaphabet so that it's going to be more difficult to guess
-
-  const randomNumberArr = [firstRandomNum, fourthRandomNum, secondRandomNum, thirdRandomNum];
+  const questionRandomNum = Math.floor(Math.random() * 2);
 
   function checkCorrectAnswer(e) {
     e.preventDefault();
-    setIsAnswered(true);
+    setDisabledFieldset(true);
+    setShowNextBtn(true);
+    const winCountry = randomContry.name;
+    const userGuesss = e.target.dataset.value;
 
-    if (countries[firstRandomNum].name === e.target.dataset.value) {
+    if (winCountry === userGuesss) {
       console.log("correct");
       setIsCorrect(true);
       setScore(prev => prev + 1);
@@ -33915,12 +34031,7 @@ function App() {
         backgroundColor: "green"
       });
     } else {
-      const theRightAnswerIdex = randomNumberArr.find(index => {
-        return countries[index].name === countries[firstRandomNum].name;
-      });
       console.log("incorrect");
-      const correctAnswer = countries[theRightAnswerIdex].name;
-      console.log(correctAnswer);
       setIsCorrect(false);
       setBgcolor({
         backgroundColor: "red"
@@ -33928,31 +34039,38 @@ function App() {
     }
   }
 
+  (0, _react.useEffect)(() => {
+    fetchCountries();
+    setIsCorrect('');
+    setDisabledFieldset(false);
+    setBgcolor({
+      backgroundColor: "white"
+    });
+  }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "question-quiz"
-  }, " ", /*#__PURE__*/_react.default.createElement("em", null, countries[firstRandomNum].capital), " is the capital of ?"), /*#__PURE__*/_react.default.createElement("div", null, randomNumberArr.map(country => /*#__PURE__*/_react.default.createElement("div", {
-    className: "btn-container",
-    key: countries[country].name
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn-country",
-    "data-value": countries[country].name,
-    style: bgcolor,
-    onClick: checkCorrectAnswer
-  }, countries[country].name)))), iseAnswered && /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    className: "btn-next",
-    onClick: nextQuestion
-  }, "Next"), showScore && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Score: ", score), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button"
-  }, "Try again")));
+    onClick: getRandomCountry
+  }, "Start"), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+    questionRandomNum: questionRandomNum,
+    randomContry: randomContry
+  }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
+    checkCorrectAnswer: checkCorrectAnswer,
+    randomContry: randomContry,
+    randomOptions: randomOptions,
+    bgcolor: bgcolor,
+    disbledFieldset: disbledFieldset
+  }), showNextBtn && /*#__PURE__*/_react.default.createElement(_NextButton.default, {
+    clickNext: clickNext,
+    isCorrect: isCorrect,
+    score: score
+  }));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -33994,7 +34112,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59879" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59827" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
