@@ -33877,15 +33877,19 @@ function Answers({
     onClick: e => checkCorrectAnswer(e),
     className: "btn-container"
   }, /*#__PURE__*/_react.default.createElement("button", {
+    style: bgcolor,
     className: "btn-country",
     "data-value": randomOptions[0]
   }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+    style: bgcolor,
     className: "btn-country",
     "data-value": randomOptions[1]
   }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+    style: bgcolor,
     className: "btn-country",
     "data-value": randomOptions[2]
   }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+    style: bgcolor,
     className: "btn-country",
     "data-value": randomOptions[3]
   }, randomOptions[3]))));
@@ -33917,6 +33921,33 @@ function Questions({
 
 var _default = Questions;
 exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"pages/Popup.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Popup({
+  score,
+  fetchCountries
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "popup"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Score:", score), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: fetchCountries,
+    className: "btn-try-again"
+  }, "Try again"));
+}
+
+var _default = Popup;
+exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
@@ -33927,7 +33958,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
+var _Popup = _interopRequireDefault(require("../pages/Popup"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33935,21 +33966,49 @@ function NextButton({
   clickNext,
   isCorrect,
   getRandomCountry,
-  score
+  score,
+  showPopup,
+  fetchCountries
 }) {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    onClick: clickNext
-  }, "Next"), isCorrect === true ? getRandomCountry : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/score"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Score:", score)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/score"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Try again")))));
+    onClick: clickNext,
+    className: "btn-next"
+  }, "Next"), isCorrect === true ? getRandomCountry : '', showPopup ? /*#__PURE__*/_react.default.createElement(_Popup.default, {
+    score: score,
+    fetchCountries: fetchCountries
+  }) : "");
 }
 
 var _default = NextButton;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../pages/Popup":"pages/Popup.js"}],"Components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header({
+  fetchCountries
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-container"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: fetchCountries,
+    className: "btn-start"
+  }, "Click to start"));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33964,6 +34023,8 @@ var _Answers = _interopRequireDefault(require("./Components/Answers"));
 var _Questions = _interopRequireDefault(require("./Components/Questions"));
 
 var _NextButton = _interopRequireDefault(require("./Components/NextButton"));
+
+var _Header = _interopRequireDefault(require("./Components/Header"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33982,6 +34043,7 @@ function App() {
   const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
   const [disbledFieldset, setDisabledFieldset] = (0, _react.useState)(false);
   const [showNextBtn, setShowNextBtn] = (0, _react.useState)(false);
+  const [showPopup, setShowPopup] = (0, _react.useState)(false);
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -34004,38 +34066,40 @@ function App() {
     setIsCorrect('');
     setDisabledFieldset(false);
     setShowNextBtn(false);
+    setBgcolor({
+      backgroundColor: "white"
+    });
+    setShowPopup(false);
   }
 
   function clickNext() {
     if (isCorrect) {
       getRandomCountry();
+      setShowPopup(false);
     } else {
       console.log('try again');
+      setShowPopup(true);
     }
   }
 
   const questionRandomNum = Math.floor(Math.random() * 2);
 
   function checkCorrectAnswer(e) {
-    e.preventDefault();
-    setDisabledFieldset(true);
+    e.preventDefault(); // setDisabledFieldset(true);
+
     setShowNextBtn(true);
     const winCountry = randomContry.name;
     const userGuesss = e.target.dataset.value;
 
     if (winCountry === userGuesss) {
-      console.log("correct");
+      console.log("correct"); // e.target.style.backgroundColor = "green"
+
       setIsCorrect(true);
-      setScore(prev => prev + 1);
-      setBgcolor({
-        backgroundColor: "green"
-      });
+      setScore(prev => prev + 1); // setBgcolor({backgroundColor: "green"});
     } else {
-      console.log("incorrect");
-      setIsCorrect(false);
-      setBgcolor({
-        backgroundColor: "red"
-      });
+      console.log("incorrect"); // e.target.style.backgroundColor = "red"
+
+      setIsCorrect(false); // setBgcolor({backgroundColor: "red"})
     }
   }
 
@@ -34047,12 +34111,11 @@ function App() {
       backgroundColor: "white"
     });
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
+    fetchCountries: fetchCountries
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: getRandomCountry
-  }, "Start"), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
     questionRandomNum: questionRandomNum,
     randomContry: randomContry
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
@@ -34064,13 +34127,15 @@ function App() {
   }), showNextBtn && /*#__PURE__*/_react.default.createElement(_NextButton.default, {
     clickNext: clickNext,
     isCorrect: isCorrect,
-    score: score
-  }));
+    score: score,
+    showPopup: showPopup,
+    fetchCountries: fetchCountries
+  })));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

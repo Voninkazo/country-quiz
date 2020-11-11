@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Answers from './Components/Answers';
 import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
+import Header from './Components/Header';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     const [randomOptions,setRandomOptions] = useState([]);
     const [disbledFieldset,setDisabledFieldset] = useState(false);
     const [showNextBtn,setShowNextBtn] = useState(false);
+    const [showPopup,setShowPopup] = useState(false);
 
     const fetchCountries = async() => {
         const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -36,13 +38,17 @@ function App() {
     setIsCorrect('');
     setDisabledFieldset(false);
     setShowNextBtn(false)
+    setBgcolor({backgroundColor: "white"})
+    setShowPopup(false)
    }
 
     function clickNext() {
         if (isCorrect) {
             getRandomCountry();
+            setShowPopup(false);
         } else {
             console.log('try again')
+            setShowPopup(true);
         }
     }
 
@@ -50,21 +56,23 @@ function App() {
 
     function checkCorrectAnswer(e) {
         e.preventDefault();
-        setDisabledFieldset(true);
+        // setDisabledFieldset(true);
         setShowNextBtn(true)
         const winCountry = randomContry.name;
         const userGuesss = e.target.dataset.value;
 
         if(winCountry === userGuesss ){
             console.log("correct")
+            // e.target.style.backgroundColor = "green"
             setIsCorrect(true)
             setScore(prev => prev + 1);
-            setBgcolor({backgroundColor: "green"});
+            // setBgcolor({backgroundColor: "green"});
         } 
         else {
             console.log("incorrect")
-            setIsCorrect(false)
-            setBgcolor({backgroundColor: "red"})
+            // e.target.style.backgroundColor = "red"
+            setIsCorrect(false);
+            // setBgcolor({backgroundColor: "red"})
         }
     }
 
@@ -76,9 +84,11 @@ function App() {
     },[])
 
     return (
+    <div>
+        <Header 
+        fetchCountries={fetchCountries}
+        />
         <div className="quiz-container">
-            <button type="button" onClick={getRandomCountry}>Start</button>
-
             <Questions 
             questionRandomNum={questionRandomNum}
             randomContry={randomContry}
@@ -97,10 +107,13 @@ function App() {
             clickNext={clickNext}
             isCorrect={isCorrect}
             score={score}
+            showPopup={showPopup}
+            fetchCountries={fetchCountries}
             />
 
             }
         </div>
+    </div>
     )
 }
 

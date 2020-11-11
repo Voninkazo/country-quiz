@@ -1,28 +1,19 @@
 import React from 'react';
-import {Link, Switch,Route} from 'react-router-dom';
+import Popup from '../pages/Popup';
 
-
-function NextButton({clickNext,isCorrect, getRandomCountry,score}) {
+function NextButton({clickNext,isCorrect, getRandomCountry,score,showPopup,fetchCountries}) {
     return (
         <div>
-            <button type="button" onClick={clickNext}>Next</button>
+            <button type="button" onClick={clickNext} className="btn-next">Next</button>
         {isCorrect === true ?
-        getRandomCountry
-            :
-            (
-
-                <div>
-                <Link to="/score">
-                 <p>Score:{score}</p>
-                </Link>
-                <Switch>
-                    <Route path="/score">
-                        <p>Try again</p>
-                    </Route>
-                </Switch>
-                </div>
-
-            )
+        getRandomCountry : ''}
+    
+        {showPopup ?
+            <Popup
+            score={score}
+            fetchCountries={fetchCountries}
+             />
+             : ""
         }
         </div>
     )
