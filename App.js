@@ -112,7 +112,7 @@ function App() {
             {showNextBtn &&
             <NextButton  
             clickNext={clickNext}
-            isCorrect={isCorrect}
+            isCorrect={isCorrect}   
             score={score}
             showPopup={showPopup}
             fetchCountries={fetchCountries}

@@ -33913,7 +33913,7 @@ function Questions({
   questionRandomNum,
   randomContry
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, randomContry.capital, " is the capital of ?") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomContry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomContry.flag,
     className: "flag"
   }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")));
@@ -33973,7 +33973,9 @@ function Header({
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"pages/Popup.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"winner.svg":[function(require,module,exports) {
+module.exports = "/winner.a2a7e328.svg";
+},{}],"pages/Popup.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33983,6 +33985,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _winner = _interopRequireDefault(require("../winner.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Popup({
@@ -33991,7 +33995,10 @@ function Popup({
 }) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "popup"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Score:", score), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _winner.default,
+    alt: "img"
+  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: fetchCountries,
     className: "btn-try-again"
@@ -34000,7 +34007,7 @@ function Popup({
 
 var _default = Popup;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34174,7 +34181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59827" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57046" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -4,7 +4,7 @@ function Questions({ questionRandomNum,randomContry}) {
     return(
         <div>
             {questionRandomNum === 0 ?
-             <h3>{randomContry.capital} is the capital of ?</h3>
+             <h3><em>{randomContry.capital}</em> is the capital of ?</h3>
              :
              (<div>
                 <img src={randomContry.flag} className="flag"/>
