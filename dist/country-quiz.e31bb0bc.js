@@ -33921,6 +33921,58 @@ function Questions({
 
 var _default = Questions;
 exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function NextButton({
+  clickNext,
+  isCorrect,
+  getRandomCountry
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: clickNext,
+    className: "btn-next"
+  }, "Next"), isCorrect === true && getRandomCountry);
+}
+
+var _default = NextButton;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header({
+  fetchCountries
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "header-container"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: fetchCountries,
+    className: "btn-start"
+  }, "Click to start"));
+}
+
+var _default = Header;
+exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"pages/Popup.js":[function(require,module,exports) {
 "use strict";
 
@@ -33948,66 +34000,6 @@ function Popup({
 
 var _default = Popup;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Popup = _interopRequireDefault(require("../pages/Popup"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function NextButton({
-  clickNext,
-  isCorrect,
-  getRandomCountry,
-  score,
-  showPopup,
-  fetchCountries
-}) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: clickNext,
-    className: "btn-next"
-  }, "Next"), isCorrect === true ? getRandomCountry : '', showPopup ? /*#__PURE__*/_react.default.createElement(_Popup.default, {
-    score: score,
-    fetchCountries: fetchCountries
-  }) : "");
-}
-
-var _default = NextButton;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../pages/Popup":"pages/Popup.js"}],"Components/Header.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Header({
-  fetchCountries
-}) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: fetchCountries,
-    className: "btn-start"
-  }, "Click to start"));
-}
-
-var _default = Header;
-exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -34025,6 +34017,8 @@ var _Questions = _interopRequireDefault(require("./Components/Questions"));
 var _NextButton = _interopRequireDefault(require("./Components/NextButton"));
 
 var _Header = _interopRequireDefault(require("./Components/Header"));
+
+var _Popup = _interopRequireDefault(require("./pages/Popup"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34113,7 +34107,10 @@ function App() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
     fetchCountries: fetchCountries
-  }), /*#__PURE__*/_react.default.createElement("div", {
+  }), showPopup ? /*#__PURE__*/_react.default.createElement(_Popup.default, {
+    score: score,
+    fetchCountries: fetchCountries
+  }) : /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
   }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
     questionRandomNum: questionRandomNum,
@@ -34135,7 +34132,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/Popup":"pages/Popup.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

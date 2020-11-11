@@ -3,6 +3,7 @@ import Answers from './Components/Answers';
 import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
 import Header from './Components/Header';
+import Popup from './pages/Popup';
 
 
 function App() {
@@ -88,6 +89,12 @@ function App() {
         <Header 
         fetchCountries={fetchCountries}
         />
+        {showPopup ?
+            <Popup 
+            score={score}
+            fetchCountries={fetchCountries}
+            />
+        :
         <div className="quiz-container">
             <Questions 
             questionRandomNum={questionRandomNum}
@@ -110,9 +117,9 @@ function App() {
             showPopup={showPopup}
             fetchCountries={fetchCountries}
             />
-
             }
         </div>
+}
     </div>
     )
 }
