@@ -3,7 +3,7 @@ import Answers from './Components/Answers';
 import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
 import Header from './Components/Header';
-import Popup from './pages/Popup';
+import Results from './pages/PopupResult';
 import BackgroundImg from './icons/check.svg';
 
 
@@ -11,24 +11,24 @@ function App() {
     const [countries,setCountries] = useState([]);
     const [score,setScore] = useState(0);
     const [isCorrect,setIsCorrect] = useState(false);
-    const [randomCountry,setRoandomCountry] = useState({});
-    const [randomOptions,setRandomOptions] = useState([]);
+    const [randomCountry,setRandomCountry] = useState({});
+    const [randomAnswerOptions,setRandoAnswermOptions] = useState([]);
     const [disbledFieldset,setDisabledFieldset] = useState(false);
     const [showNextBtn,setShowNextBtn] = useState(false);
-    const [showPopup,setShowPopup] = useState(false);
+    const [showResults,setShowResults] = useState(false);
+    const [startGame,setStartGame] = useState(false);
     const correctAnswer = useRef(null);
 
-    // when two capital questions are answered, change the qustion into another type of question and do the same thing again
-    const questionRandomNum = Math.floor(Math.random() * 2);
-
+    // ftech the data from the API
     const fetchCountries = async() => {
         const info = await fetch("https://restcountries.eu/rest/v2/all");
         const data = await info.json();
         setCountries(data);
-        getRandomCountry()
+        getRandomCountry();
         console.log(data);
     }
 
+    // get the answers options and questions rnadomly 
    function getRandomCountry() {
     // if the obj is empty, do not return anything
     if (!countries.length) return null
@@ -38,17 +38,27 @@ function App() {
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)]
-    const randomOptions = [randomNum.name,firstRandomNum.name,secondRandomNum.name,thirdRandomNum.name,fourthRandomNum.name]
+    let randomOptions = [randomNum.name,firstRandomNum.name,secondRandomNum.name,thirdRandomNum.name,fourthRandomNum.name]
+    // randomOptions.sort(() => { return 0.5 - Math.random() });
 
-    setRoandomCountry(randomNum);
-    setRandomOptions(randomOptions);
+    setRandomCountry(randomNum);
+    setRandoAnswermOptions(randomOptions);
     setIsCorrect('');
     setDisabledFieldset(false);
-    setShowNextBtn(false)
-    setShowPopup(false)
+    setShowNextBtn(false);
+    setShowResults(false);
    }
 
-   
+    // when two capital questions are answered, change the qustion into another type of question and do the same thing again
+    const questionRandomNum = Math.floor(Math.random() * 2);
+
+   // handel strat button to start the game
+   function handleStartBtn() {
+       setStartGame(true);
+       fetchCountries();
+   }
+
+   // This function will check whatever answer has a user clicked and say if it's correct or not
    function checkAnswer(e) {
     e.preventDefault();
     setDisabledFieldset(true);
@@ -79,20 +89,30 @@ function App() {
     }
 }
 
-    // Here we set a few conditions when the next button is clicked
-    function clickNext() {
+    // Here we set a few conditions when the next button is clicked:
+    // change bg color of buttons 
+    function handleClickNext() {
         if (isCorrect) {
-            getRandomCountry();
-            setShowPopup(false);
-            setDisabledFieldset(false)
+            setShowResults(false);
+            setDisabledFieldset(false);
+            // fetch a new question
+            fetchCountries();
             // reset the bg color and color and set them into the default colors
             correctAnswer.current.style.backgroundColor = "#ffffff";
             correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)"
         } else {
-            console.log('try again')
+            console.log('try again');
             // show result
-            setShowPopup(true);
+            setShowResults(true);
         }
+    }
+
+    // When we clcik the try button, set the score into 0 again and fetch another question and close the result
+    function handleBtnTryAgain() {
+        setScore(0);
+        fetchCountries();
+        setShowResults(false);
+        setStartGame(true);
     }
 
     useEffect(() => {
@@ -104,14 +124,14 @@ function App() {
     return (
     <div>
         <Header 
-        fetchCountries={fetchCountries}
+        handleStartBtn={handleStartBtn}
         />
-        {showPopup ?
-            <Popup 
+        {showResults ?
+            <Results 
             score={score}
-            fetchCountries={fetchCountries}
+            handleBtnTryAgain={handleBtnTryAgain}
             />
-        :
+        :  startGame ? 
         <div className="quiz-container">
             <Questions 
             questionRandomNum={questionRandomNum}
@@ -121,21 +141,20 @@ function App() {
             <Answers 
             checkAnswer={checkAnswer}
             randomCountry={randomCountry}
-            randomOptions={randomOptions}
+            randomAnswerOptions={randomAnswerOptions}
             disbledFieldset={disbledFieldset}
             correctAnswer={correctAnswer}
             />
 
             {showNextBtn &&
             <NextButton  
-            clickNext={clickNext}
+            handleClickNext={handleClickNext}
             isCorrect={isCorrect}   
-            score={score}
-            showPopup={showPopup}
             fetchCountries={fetchCountries}
             />
             }
         </div>
+        : ""
 }
     </div>
     )
