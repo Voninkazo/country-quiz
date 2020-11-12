@@ -50,7 +50,7 @@ function App() {
    }
 
     // when two capital questions are answered, change the qustion into another type of question and do the same thing again
-    const questionRandomNum = Math.floor(Math.random() * 2);
+    const numberOfQuest= Math.floor(Math.random() * 2);
 
    // handel strat button to start the game
    function handleStartBtn() {
@@ -73,7 +73,7 @@ function App() {
         e.target.style.backgroundColor = "#60BF88";
         e.target.style.backgroundImage = `${BackgroundImg}`;
         e.target.style.color = "#ffffff";
-        console.log("correct")
+        console.log("correct");
     } 
     else {
         //// change the bg color the clicked button into red if it's incorrect
@@ -126,6 +126,7 @@ function App() {
         <Header 
         handleStartBtn={handleStartBtn}
         />
+        <main>
         {showResults ?
             <Results 
             score={score}
@@ -134,8 +135,8 @@ function App() {
         :  startGame ? 
         <div className="quiz-container">
             <Questions 
-            questionRandomNum={questionRandomNum}
             randomCountry={randomCountry}
+            numberOfQuest={numberOfQuest}
             />
 
             <Answers 
@@ -155,7 +156,7 @@ function App() {
             }
         </div>
         : ""
-}
+}       </main>
     </div>
     )
 }

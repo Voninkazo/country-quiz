@@ -47,7 +47,6 @@ h4 {
     margin-left: -50px;
     background: #FFFFFF;
     border-radius: 24px;
-    margin-bottom: -50px;
     padding: 20px;
     width: 300px;
     margin-bottom: 2rem;
@@ -68,6 +67,20 @@ button {
     outline: none;
 }
 
+.content {
+    position: relative;
+    img {
+        position: absolute;
+        top: -367%;
+        right: -7%;
+        width: 90px;
+        height: 93px;
+    }
+}
+
+// main {
+//     margin-bottom: 243px;
+// }
 .btn-country {
     background: #FFFFFF;
     border: 2px solid rgba(96, 102, 208, 0.7);
@@ -124,6 +137,7 @@ em {
     padding-bottom: 1rem;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    transition: 1s;
     p {
         font-weight: normal;
         font-size: 18px;

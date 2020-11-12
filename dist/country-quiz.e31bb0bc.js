@@ -33898,7 +33898,9 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/Questions.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
+module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
+},{}],"Components/Questions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33908,13 +33910,20 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _undraw_adventure_4hum = _interopRequireDefault(require("../undraw_adventure_4hum.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Questions({
-  questionRandomNum,
-  randomCountry
+  randomCountry,
+  numberOfQuest
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_adventure_4hum.default,
+    alt: "img"
+  }), numberOfQuest === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "flag"
   }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")) : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?"));
@@ -33922,7 +33931,7 @@ function Questions({
 
 var _default = Questions;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34081,7 +34090,7 @@ function App() {
   } // when two capital questions are answered, change the qustion into another type of question and do the same thing again
 
 
-  const questionRandomNum = Math.floor(Math.random() * 2); // handel strat button to start the game
+  const numberOfQuest = Math.floor(Math.random() * 2); // handel strat button to start the game
 
   function handleStartBtn() {
     setStartGame(true);
@@ -34150,14 +34159,14 @@ function App() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
     handleStartBtn: handleStartBtn
-  }), showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
+  }), /*#__PURE__*/_react.default.createElement("main", null, showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
     score: score,
     handleBtnTryAgain: handleBtnTryAgain
   }) : startGame ? /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
   }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
-    questionRandomNum: questionRandomNum,
-    randomCountry: randomCountry
+    randomCountry: randomCountry,
+    numberOfQuest: numberOfQuest
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
     checkAnswer: checkAnswer,
     randomCountry: randomCountry,
@@ -34168,7 +34177,7 @@ function App() {
     handleClickNext: handleClickNext,
     isCorrect: isCorrect,
     fetchCountries: fetchCountries
-  })) : "");
+  })) : "", "       "));
 }
 
 var _default = App;
