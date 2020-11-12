@@ -4,8 +4,8 @@ import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
 import Header from './Components/Header';
 import Results from './pages/PopupResult';
+import AdventureImg from './undraw_adventure_4hum.svg';
 import BackgroundImg from './icons/check.svg';
-
 
 function App() {
     const [countries,setCountries] = useState([]);
@@ -17,6 +17,7 @@ function App() {
     const [showNextBtn,setShowNextBtn] = useState(false);
     const [showResults,setShowResults] = useState(false);
     const [startGame,setStartGame] = useState(false);
+    const [numberOfTypesOfQuestion,setNumOfTypesOfQuestion] = useState(0);
     const correctAnswer = useRef(null);
 
     // ftech the data from the API
@@ -49,9 +50,6 @@ function App() {
     setShowResults(false);
    }
 
-    // when two capital questions are answered, change the qustion into another type of question and do the same thing again
-    const numberOfQuest= Math.floor(Math.random() * 2);
-
    // handel strat button to start the game
    function handleStartBtn() {
        setStartGame(true);
@@ -61,7 +59,7 @@ function App() {
    // This function will check whatever answer has a user clicked and say if it's correct or not
    function checkAnswer(e) {
     e.preventDefault();
-    setDisabledFieldset(true);
+    setDisabledFieldset(true); 
     setShowNextBtn(true)
     const winCountry = randomCountry.name;
     const userGuesss = e.target.dataset.value;
@@ -97,6 +95,8 @@ function App() {
             setDisabledFieldset(false);
             // fetch a new question
             fetchCountries();
+            // grab a question random again and be able to change them from time to time
+            setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
             // reset the bg color and color and set them into the default colors
             correctAnswer.current.style.backgroundColor = "#ffffff";
             correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)"
@@ -134,9 +134,12 @@ function App() {
             />
         :  startGame ? 
         <div className="quiz-container">
+            <div  className="content">
+                <img src={AdventureImg} alt="img"/>
+            </div>
             <Questions 
             randomCountry={randomCountry}
-            numberOfQuest={numberOfQuest}
+            numberOfTypesOfQuestion={numberOfTypesOfQuestion}
             />
 
             <Answers 
@@ -150,7 +153,7 @@ function App() {
             {showNextBtn &&
             <NextButton  
             handleClickNext={handleClickNext}
-            isCorrect={isCorrect}   
+            isCorrect={isCorrect}
             fetchCountries={fetchCountries}
             />
             }

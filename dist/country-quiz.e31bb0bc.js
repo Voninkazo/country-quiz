@@ -33898,9 +33898,7 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
-module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
-},{}],"Components/Questions.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"Components/Questions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33910,28 +33908,21 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _undraw_adventure_4hum = _interopRequireDefault(require("../undraw_adventure_4hum.svg"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Questions({
   randomCountry,
-  numberOfQuest
+  numberOfTypesOfQuestion
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "content"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _undraw_adventure_4hum.default,
-    alt: "img"
-  }), numberOfQuest === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement("div", null, numberOfTypesOfQuestion === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "flag"
-  }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")) : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?"));
+  }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")) : numberOfTypesOfQuestion === 2 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.region), " is the region of ?"));
 }
 
 var _default = Questions;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"Components/NextButton.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34019,7 +34010,9 @@ function Results({
 
 var _default = Results;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"icons/check.svg":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
+module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
+},{}],"icons/check.svg":[function(require,module,exports) {
 module.exports = "/check.d71560e5.svg";
 },{}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -34041,6 +34034,8 @@ var _Header = _interopRequireDefault(require("./Components/Header"));
 
 var _PopupResult = _interopRequireDefault(require("./pages/PopupResult"));
 
+var _undraw_adventure_4hum = _interopRequireDefault(require("./undraw_adventure_4hum.svg"));
+
 var _check = _interopRequireDefault(require("./icons/check.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34059,6 +34054,7 @@ function App() {
   const [showNextBtn, setShowNextBtn] = (0, _react.useState)(false);
   const [showResults, setShowResults] = (0, _react.useState)(false);
   const [startGame, setStartGame] = (0, _react.useState)(false);
+  const [numberOfTypesOfQuestion, setNumOfTypesOfQuestion] = (0, _react.useState)(0);
   const correctAnswer = (0, _react.useRef)(null); // ftech the data from the API
 
   const fetchCountries = async () => {
@@ -34087,10 +34083,8 @@ function App() {
     setDisabledFieldset(false);
     setShowNextBtn(false);
     setShowResults(false);
-  } // when two capital questions are answered, change the qustion into another type of question and do the same thing again
+  } // handel strat button to start the game
 
-
-  const numberOfQuest = Math.floor(Math.random() * 2); // handel strat button to start the game
 
   function handleStartBtn() {
     setStartGame(true);
@@ -34133,7 +34127,9 @@ function App() {
       setShowResults(false);
       setDisabledFieldset(false); // fetch a new question
 
-      fetchCountries(); // reset the bg color and color and set them into the default colors
+      fetchCountries(); // grab a question random again and be able to change them from time to time
+
+      setNumOfTypesOfQuestion(Math.floor(Math.random() * 3)); // reset the bg color and color and set them into the default colors
 
       correctAnswer.current.style.backgroundColor = "#ffffff";
       correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)";
@@ -34164,9 +34160,14 @@ function App() {
     handleBtnTryAgain: handleBtnTryAgain
   }) : startGame ? /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_adventure_4hum.default,
+    alt: "img"
+  })), /*#__PURE__*/_react.default.createElement(_Questions.default, {
     randomCountry: randomCountry,
-    numberOfQuest: numberOfQuest
+    numberOfTypesOfQuestion: numberOfTypesOfQuestion
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
     checkAnswer: checkAnswer,
     randomCountry: randomCountry,
@@ -34182,7 +34183,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/PopupResult":"pages/PopupResult.js","./icons/check.svg":"icons/check.svg"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/PopupResult":"pages/PopupResult.js","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg","./icons/check.svg":"icons/check.svg"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34224,7 +34225,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63285" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54999" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
