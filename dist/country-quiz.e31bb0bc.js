@@ -33868,28 +33868,29 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Answers({
   disbledFieldset,
   randomOptions,
-  bgcolor,
-  checkCorrectAnswer
+  randomCountry,
+  checkAnswer,
+  correctAnswer
 }) {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("fieldset", {
     disabled: disbledFieldset
   }, /*#__PURE__*/_react.default.createElement("form", {
-    onClick: e => checkCorrectAnswer(e),
+    onClick: e => checkAnswer(e),
     className: "btn-container"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    style: bgcolor,
+    ref: randomOptions[0] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomOptions[0]
   }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
-    style: bgcolor,
+    ref: randomOptions[1] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomOptions[1]
   }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
-    style: bgcolor,
+    ref: randomOptions[2] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomOptions[2]
   }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
-    style: bgcolor,
+    ref: randomOptions[3] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomOptions[3]
   }, randomOptions[3]))));
@@ -33911,10 +33912,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function Questions({
   questionRandomNum,
-  randomContry
+  randomCountry
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomContry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: randomContry.flag,
+  return /*#__PURE__*/_react.default.createElement("div", null, questionRandomNum === 0 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomCountry.flag,
     className: "flag"
   }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")));
 }
@@ -34007,7 +34008,9 @@ function Popup({
 
 var _default = Popup;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"icons/check.svg":[function(require,module,exports) {
+module.exports = "/check.d71560e5.svg";
+},{}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34027,6 +34030,8 @@ var _Header = _interopRequireDefault(require("./Components/Header"));
 
 var _Popup = _interopRequireDefault(require("./pages/Popup"));
 
+var _check = _interopRequireDefault(require("./icons/check.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34036,15 +34041,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function App() {
   const [countries, setCountries] = (0, _react.useState)([]);
   const [score, setScore] = (0, _react.useState)(0);
-  const [bgcolor, setBgcolor] = (0, _react.useState)({
-    backgroundColor: "white"
-  });
   const [isCorrect, setIsCorrect] = (0, _react.useState)(false);
-  const [randomContry, setRoandomCountry] = (0, _react.useState)({});
+  const [randomCountry, setRoandomCountry] = (0, _react.useState)({});
   const [randomOptions, setRandomOptions] = (0, _react.useState)([]);
   const [disbledFieldset, setDisabledFieldset] = (0, _react.useState)(false);
   const [showNextBtn, setShowNextBtn] = (0, _react.useState)(false);
   const [showPopup, setShowPopup] = (0, _react.useState)(false);
+  const correctAnswer = (0, _react.useRef)(null); // when two capital questions are answered, change the qustion into another type of question and do the same thing again
+
+  const questionRandomNum = Math.floor(Math.random() * 2);
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -34055,7 +34060,9 @@ function App() {
   };
 
   function getRandomCountry() {
-    if (!countries.length) return null;
+    // if the obj is empty, do not return anything
+    if (!countries.length) return null; // create the questions and answers from the array randomly
+
     const randomNum = countries[Math.floor(Math.random() * countries.length)];
     const firstRandomNum = countries[Math.floor(Math.random() * countries.length)];
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)];
@@ -34067,40 +34074,50 @@ function App() {
     setIsCorrect('');
     setDisabledFieldset(false);
     setShowNextBtn(false);
-    setBgcolor({
-      backgroundColor: "white"
-    });
     setShowPopup(false);
   }
+
+  function checkAnswer(e) {
+    e.preventDefault();
+    setDisabledFieldset(true);
+    setShowNextBtn(true);
+    const winCountry = randomCountry.name;
+    const userGuesss = e.target.dataset.value;
+
+    if (winCountry === userGuesss) {
+      setIsCorrect(true);
+      setScore(prev => prev + 1); // change the bg color the clicked button into green if it's the correct answer
+
+      e.target.style.backgroundColor = "#60BF88";
+      e.target.style.backgroundImage = `${_check.default}`;
+      e.target.style.color = "#ffffff";
+      console.log("correct");
+    } else {
+      //// change the bg color the clicked button into red if it's incorrect
+      e.target.style.backgroundColor = "#EA8282";
+      e.target.style.color = "#ffffff"; // show the correct answer button into green
+
+      correctAnswer.current.style.backgroundColor = "#60BF88";
+      correctAnswer.current.style.backgroundImage = `${_check.default}`;
+      correctAnswer.current.style.color = "#ffffff";
+      setIsCorrect(false);
+      console.log("incorrect");
+    }
+  } // Here we set a few conditions when the next button is clicked
+
 
   function clickNext() {
     if (isCorrect) {
       getRandomCountry();
       setShowPopup(false);
+      setDisabledFieldset(false); // reset the bg color and color and set them into the default colors
+
+      correctAnswer.current.style.backgroundColor = "#ffffff";
+      correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)";
     } else {
-      console.log('try again');
+      console.log('try again'); // show result
+
       setShowPopup(true);
-    }
-  }
-
-  const questionRandomNum = Math.floor(Math.random() * 2);
-
-  function checkCorrectAnswer(e) {
-    e.preventDefault(); // setDisabledFieldset(true);
-
-    setShowNextBtn(true);
-    const winCountry = randomContry.name;
-    const userGuesss = e.target.dataset.value;
-
-    if (winCountry === userGuesss) {
-      console.log("correct"); // e.target.style.backgroundColor = "green"
-
-      setIsCorrect(true);
-      setScore(prev => prev + 1); // setBgcolor({backgroundColor: "green"});
-    } else {
-      console.log("incorrect"); // e.target.style.backgroundColor = "red"
-
-      setIsCorrect(false); // setBgcolor({backgroundColor: "red"})
     }
   }
 
@@ -34108,9 +34125,6 @@ function App() {
     fetchCountries();
     setIsCorrect('');
     setDisabledFieldset(false);
-    setBgcolor({
-      backgroundColor: "white"
-    });
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
     fetchCountries: fetchCountries
@@ -34121,13 +34135,13 @@ function App() {
     className: "quiz-container"
   }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
     questionRandomNum: questionRandomNum,
-    randomContry: randomContry
+    randomCountry: randomCountry
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
-    checkCorrectAnswer: checkCorrectAnswer,
-    randomContry: randomContry,
+    checkAnswer: checkAnswer,
+    randomCountry: randomCountry,
     randomOptions: randomOptions,
-    bgcolor: bgcolor,
-    disbledFieldset: disbledFieldset
+    disbledFieldset: disbledFieldset,
+    correctAnswer: correctAnswer
   }), showNextBtn && /*#__PURE__*/_react.default.createElement(_NextButton.default, {
     clickNext: clickNext,
     isCorrect: isCorrect,
@@ -34139,7 +34153,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/Popup":"pages/Popup.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/Popup":"pages/Popup.js","./icons/check.svg":"icons/check.svg"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34181,7 +34195,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57046" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59404" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

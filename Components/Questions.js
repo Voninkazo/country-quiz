@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Questions({ questionRandomNum,randomContry}) {
+function Questions({ questionRandomNum,randomCountry}) {
     return(
         <div>
             {questionRandomNum === 0 ?
-             <h3><em>{randomContry.capital}</em> is the capital of ?</h3>
+             <h3><em>{randomCountry.capital}</em> is the capital of ?</h3>
              :
              (<div>
-                <img src={randomContry.flag} className="flag"/>
+                <img src={randomCountry.flag} className="flag"/>
                 <h2>Which country does this flag belong to?</h2>
             </div>)
             }
