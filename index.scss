@@ -46,13 +46,13 @@ h3 {
 
 .header-container {
     padding-left: 5rem;
-    text-align: center;
+    text-align: left;
 }
 
 .quiz-container {
     position: absolute;
     top: 22%;
-    left: 45%;
+    left: 16%;
     margin-top: -50px;
     margin-left: -50px;
     background: #FFFFFF;
@@ -129,7 +129,7 @@ button {
     position: absolute;
     position: absolute;
     top: 22%;
-    left: 45%;
+    left: 16%;
     height: 542px;
     padding-top: 46px;
     margin-top: -50px;
@@ -140,7 +140,6 @@ button {
     padding-right: 113px;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    transition: 1s;
     p {
         font-weight: normal;
         font-size: 18px;
@@ -243,4 +242,14 @@ b {
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
+}
+
+@media (min-width: 768px) {
+    .quiz-container,
+    .popup {
+        left: 45%;
+    }
+    .header-container {
+        text-align: center;
+    }
 }
