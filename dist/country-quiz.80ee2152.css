@@ -13,7 +13,7 @@ html {
 body {
   background-image: url(/background.e3ad310f.png);
   background-repeat: no-repeat;
-  background-size: 2000px;
+  background-size: cover;
   width: 100%;
   height: 100%;
 }
@@ -166,7 +166,6 @@ button {
   font-weight: bold;
   font-size: 18px;
   line-height: 27px;
-  /* identical to box height */
   color: #FFFFFF;
 }
 
@@ -177,7 +176,6 @@ button {
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
-  /* identical to box height */
   color: #1D355D;
   background-color: white;
   margin-top: 71px;
@@ -194,7 +192,6 @@ button {
   margin-bottom: 1rem;
   font-size: 18px;
   line-height: 27px;
-  /* identical to box height */
   color: #FFFFFF;
   background-color: hotpink;
   border: none;
