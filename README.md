@@ -2,11 +2,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://github.com/Voninkazo/country-quiz">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://sandy-country-quiz.netlify.app/">
       Solution
     </a>
   </h3>
@@ -27,7 +27,9 @@
 
 ## Overview
 
-![screenshot](./assets/coutry-quiz-screenshot.png)
+![screenshot](./assets/screenshot1.png)
+![screenshot](./assets/screenshot2.png)
+![screenshot](./assets/screenshot3.png)
 
 Just right above are a few screenshots of my project.
 
@@ -60,6 +62,7 @@ Just right above are a few screenshots of my project.
 
 -   [React](https://reactjs.org/)
 -   [Sass]() 
+-   [Jsx]()
 
 ## Features
 
@@ -89,5 +92,5 @@ $ npm start
 ## Contact
 
 -   Website [your-website.com](https://{your-web-site-link})
--   GitHub [@your-username](https://{github.com/your-usermame})
+-   GitHub [@Sandy](https://github.com/Vininkazo)
 -   Twitter [@your-twitter](https://{twitter.com/your-username})
