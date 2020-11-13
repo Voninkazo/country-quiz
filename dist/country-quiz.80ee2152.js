@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./fonts\\open-sans.woff2":[["open-sans.ddad6804.woff2","fonts/open-sans.woff2"],"fonts/open-sans.woff2"],"./fonts\\open-sans.woff":[["open-sans.f513bf21.woff","fonts/open-sans.woff"],"fonts/open-sans.woff"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./fonts\\open-sans.woff2":[["open-sans.ddad6804.woff2","fonts/open-sans.woff2"],"fonts/open-sans.woff2"],"./fonts\\open-sans.woff":[["open-sans.f513bf21.woff","fonts/open-sans.woff"],"fonts/open-sans.woff"],"./background.png":[["background.e3ad310f.png","background.png"],"background.png"],"./icons\\check-tick.png":[["check-tick.48a5bac0.png","icons/check-tick.png"],"icons/check-tick.png"],"./icons\\wrong.svg":[["wrong.7f7ff515.svg","icons/wrong.svg"],"icons/wrong.svg"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54999" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61207" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

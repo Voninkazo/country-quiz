@@ -4,8 +4,8 @@ import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
 import Header from './Components/Header';
 import Results from './pages/PopupResult';
-import AdventureImg from './undraw_adventure_4hum.svg';
-import BackgroundImg from './icons/check.svg';
+import AdventureImg from './Components/AdventureImg';
+
 
 function App() {
     const [countries,setCountries] = useState([]);
@@ -39,8 +39,16 @@ function App() {
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)]
-    let randomOptions = [randomNum.name,firstRandomNum.name,secondRandomNum.name,thirdRandomNum.name,fourthRandomNum.name]
-    // randomOptions.sort(() => { return 0.5 - Math.random() });
+
+    let randomOptions = [
+        firstRandomNum.name,
+        secondRandomNum.name,
+        randomNum.name,
+        fourthRandomNum.name,
+        thirdRandomNum.name
+    ]
+    // sort the array so that it would be more difficult to get the right answer
+    randomOptions.sort(() => { return 0.5 - Math.random() });
 
     setRandomCountry(randomNum);
     setRandoAnswermOptions(randomOptions);
@@ -67,21 +75,15 @@ function App() {
     if(winCountry === userGuesss ){
         setIsCorrect(true)
         setScore(prev => prev + 1);
-        // change the bg color the clicked button into green if it's the correct answer
-        e.target.style.backgroundColor = "#60BF88";
-        e.target.style.backgroundImage = `${BackgroundImg}`;
-        e.target.style.color = "#ffffff";
+        // change the className of the clicked button if it's the correct answer
+        e.target.className = "correct";
         console.log("correct");
     } 
     else {
-        //// change the bg color the clicked button into red if it's incorrect
-        e.target.style.backgroundColor = "#EA8282";
-        e.target.style.color = "#ffffff";
-
+        // change the className the clicked button into red if it's incorrect
+        e.target.className = "incorrect";
         // show the correct answer button into green
-        correctAnswer.current.style.backgroundColor = "#60BF88";
-        correctAnswer.current.style.backgroundImage =`${BackgroundImg}`;
-        correctAnswer.current.style.color = "#ffffff";
+        correctAnswer.current.className ="correct";
         setIsCorrect(false);
         console.log("incorrect");
     }
@@ -97,9 +99,8 @@ function App() {
             fetchCountries();
             // grab a question random again and be able to change them from time to time
             setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
-            // reset the bg color and color and set them into the default colors
-            correctAnswer.current.style.backgroundColor = "#ffffff";
-            correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)"
+            // reset the className and set them into the default styles
+            correctAnswer.current.className = "btn-country";
         } else {
             console.log('try again');
             // show result
@@ -113,6 +114,7 @@ function App() {
         fetchCountries();
         setShowResults(false);
         setStartGame(true);
+        setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
     }
 
     useEffect(() => {
@@ -134,9 +136,7 @@ function App() {
             />
         :  startGame ? 
         <div className="quiz-container">
-            <div  className="content">
-                <img src={AdventureImg} alt="img"/>
-            </div>
+            <AdventureImg />
             <Questions 
             randomCountry={randomCountry}
             numberOfTypesOfQuestion={numberOfTypesOfQuestion}

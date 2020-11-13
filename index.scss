@@ -12,7 +12,9 @@ html {
 }
 
 body {
-    background-color: rgba(96, 102, 208, 0.8);
+    background-image: url(./background.png);
+    background-repeat: no-repeat;
+    background-size: 2000px;
 }
 
 h1 {
@@ -186,6 +188,7 @@ em {
 
 .btn-try-again:hover {
     background-color: #F9A826;
+    color: #FFFFFF;
 }
 
 .btn-start {
@@ -204,4 +207,38 @@ b {
     color: lightgreen;
     font-size: 28px;
     line-height: 32px;
+}
+
+.correct {
+    background-image: url(./icons/check-tick.png);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    background-color: #60BF88;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 25px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.incorrect {
+    background-image: url(./icons//wrong.svg);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    color: #FFFFFF;
+    background-color: #EA8282;
+    background-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 25px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
 }

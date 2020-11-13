@@ -34012,9 +34012,32 @@ var _default = Results;
 exports.default = _default;
 },{"react":"node_modules/react/index.js","../winner.svg":"winner.svg"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
-},{}],"icons/check.svg":[function(require,module,exports) {
-module.exports = "/check.d71560e5.svg";
-},{}],"App.js":[function(require,module,exports) {
+},{}],"Components/AdventureImg.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _undraw_adventure_4hum = _interopRequireDefault(require("../undraw_adventure_4hum.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function AdventureImg() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_adventure_4hum.default,
+    alt: "img"
+  }));
+}
+
+var _default = AdventureImg;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34034,9 +34057,7 @@ var _Header = _interopRequireDefault(require("./Components/Header"));
 
 var _PopupResult = _interopRequireDefault(require("./pages/PopupResult"));
 
-var _undraw_adventure_4hum = _interopRequireDefault(require("./undraw_adventure_4hum.svg"));
-
-var _check = _interopRequireDefault(require("./icons/check.svg"));
+var _AdventureImg = _interopRequireDefault(require("./Components/AdventureImg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34075,8 +34096,11 @@ function App() {
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)];
     const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)];
     const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    let randomOptions = [randomNum.name, firstRandomNum.name, secondRandomNum.name, thirdRandomNum.name, fourthRandomNum.name]; // randomOptions.sort(() => { return 0.5 - Math.random() });
+    let randomOptions = [firstRandomNum.name, secondRandomNum.name, randomNum.name, fourthRandomNum.name, thirdRandomNum.name]; // sort the array so that it would be more difficult to get the right answer
 
+    randomOptions.sort(() => {
+      return 0.5 - Math.random();
+    });
     setRandomCountry(randomNum);
     setRandoAnswermOptions(randomOptions);
     setIsCorrect('');
@@ -34101,20 +34125,15 @@ function App() {
 
     if (winCountry === userGuesss) {
       setIsCorrect(true);
-      setScore(prev => prev + 1); // change the bg color the clicked button into green if it's the correct answer
+      setScore(prev => prev + 1); // change the className of the clicked button if it's the correct answer
 
-      e.target.style.backgroundColor = "#60BF88";
-      e.target.style.backgroundImage = `${_check.default}`;
-      e.target.style.color = "#ffffff";
+      e.target.className = "correct";
       console.log("correct");
     } else {
-      //// change the bg color the clicked button into red if it's incorrect
-      e.target.style.backgroundColor = "#EA8282";
-      e.target.style.color = "#ffffff"; // show the correct answer button into green
+      // change the className the clicked button into red if it's incorrect
+      e.target.className = "incorrect"; // show the correct answer button into green
 
-      correctAnswer.current.style.backgroundColor = "#60BF88";
-      correctAnswer.current.style.backgroundImage = `${_check.default}`;
-      correctAnswer.current.style.color = "#ffffff";
+      correctAnswer.current.className = "correct";
       setIsCorrect(false);
       console.log("incorrect");
     }
@@ -34129,10 +34148,9 @@ function App() {
 
       fetchCountries(); // grab a question random again and be able to change them from time to time
 
-      setNumOfTypesOfQuestion(Math.floor(Math.random() * 3)); // reset the bg color and color and set them into the default colors
+      setNumOfTypesOfQuestion(Math.floor(Math.random() * 3)); // reset the className and set them into the default styles
 
-      correctAnswer.current.style.backgroundColor = "#ffffff";
-      correctAnswer.current.style.color = "rgba(96, 102, 208, 0.8)";
+      correctAnswer.current.className = "btn-country";
     } else {
       console.log('try again'); // show result
 
@@ -34146,6 +34164,7 @@ function App() {
     fetchCountries();
     setShowResults(false);
     setStartGame(true);
+    setNumOfTypesOfQuestion(Math.floor(Math.random() * 3));
   }
 
   (0, _react.useEffect)(() => {
@@ -34160,12 +34179,7 @@ function App() {
     handleBtnTryAgain: handleBtnTryAgain
   }) : startGame ? /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "content"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _undraw_adventure_4hum.default,
-    alt: "img"
-  })), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+  }, /*#__PURE__*/_react.default.createElement(_AdventureImg.default, null), /*#__PURE__*/_react.default.createElement(_Questions.default, {
     randomCountry: randomCountry,
     numberOfTypesOfQuestion: numberOfTypesOfQuestion
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
@@ -34183,7 +34197,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/PopupResult":"pages/PopupResult.js","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg","./icons/check.svg":"icons/check.svg"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/PopupResult":"pages/PopupResult.js","./Components/AdventureImg":"Components/AdventureImg.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34225,7 +34239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54999" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61207" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
