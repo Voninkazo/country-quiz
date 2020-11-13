@@ -6,7 +6,7 @@ function Questions({ randomCountry,numberOfTypesOfQuestion}) {
             {numberOfTypesOfQuestion === 0 ?
             <div>
                  <img src={randomCountry.flag} className="flag"/>
-                <h2>Which country does this flag belong to?</h2>
+                <h3>Which country does this flag belong to?</h3>
             </div>
             : numberOfTypesOfQuestion === 2 ?
              <h3><em>{randomCountry.capital}</em> is the capital of ?</h3>

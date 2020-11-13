@@ -6,7 +6,6 @@ import Header from './Components/Header';
 import Results from './pages/PopupResult';
 import HeaderImg from './Components/HeaderImg';
 
-
 function App() {
     const [countries,setCountries] = useState([]);
     const [score,setScore] = useState(0);
@@ -19,6 +18,7 @@ function App() {
     const [startGame,setStartGame] = useState(false);
     const [numberOfTypesOfQuestion,setNumOfTypesOfQuestion] = useState(0);
     const correctAnswer = useRef(null);
+    const [showStartBtn,setShowStartBtn] = useState(true);
 
     // ftech the data from the API
     const fetchCountries = async() => {
@@ -62,6 +62,7 @@ function App() {
    function handleStartBtn() {
        setStartGame(true);
        fetchCountries();
+       setShowStartBtn(false);
    }
 
    // This function will check whatever answer has a user clicked and say if it's correct or not
@@ -84,7 +85,7 @@ function App() {
         e.target.className = "incorrect";
         // show the correct answer button into green
         correctAnswer.current.className ="correct";
-        setIsCorrect(false);
+        setIsCorrect(false);    
         console.log("incorrect");
     }
 }
@@ -95,7 +96,6 @@ function App() {
         if (isCorrect) {
             setShowResults(false);
             setDisabledFieldset(false);
-            // fetch a new question
             fetchCountries();
             // grab a question random again and be able to change them from time to time
             setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
@@ -124,9 +124,10 @@ function App() {
     },[])
 
     return (
-    <div>
+    <>
         <Header 
         handleStartBtn={handleStartBtn}
+        showStartBtn={showStartBtn}
         />
         <main>
         {showResults ?
@@ -160,7 +161,7 @@ function App() {
         </div>
         : ""
 }       </main>
-    </div>
+    </>
     )
 }
 

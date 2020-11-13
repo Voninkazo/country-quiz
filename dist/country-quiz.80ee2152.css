@@ -14,13 +14,14 @@ body {
   background-image: url(/background.e3ad310f.png);
   background-repeat: no-repeat;
   background-size: 2000px;
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
   font-weight: bold;
   font-size: 36px;
   line-height: 54px;
-  /* identical to box height */
   text-transform: uppercase;
   color: #F2F2F2;
 }
@@ -31,8 +32,15 @@ h4 {
   line-height: 72px;
   color: #1D355D;
   margin: 0;
-  padding-top: 1rem;
+  padding-top: 77px;
   padding-bottom: 1rem;
+}
+
+h3 {
+  color: #1D355D;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
 }
 
 .header-container {
@@ -48,6 +56,7 @@ h4 {
   margin-left: -50px;
   background: #FFFFFF;
   border-radius: 24px;
+  margin-bottom: 300px;
   width: 464px;
   padding: 20px;
   margin-bottom: 2rem;
@@ -127,13 +136,14 @@ em {
   position: absolute;
   top: 22%;
   left: 45%;
+  height: 542px;
+  padding-top: 46px;
   margin-top: -50px;
   margin-left: -50px;
   margin-bottom: -50px;
   background-color: white;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 1rem;
+  padding-left: 113px;
+  padding-right: 113px;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   transition: 1s;
@@ -180,6 +190,7 @@ em {
   /* identical to box height */
   color: #1D355D;
   background-color: white;
+  margin-top: 71px;
   padding: 1rem 2rem;
 }
 

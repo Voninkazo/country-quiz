@@ -29838,7 +29838,7 @@ function Questions({
   }, numberOfTypesOfQuestion === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomCountry.flag,
     className: "flag"
-  }), /*#__PURE__*/_react.default.createElement("h2", null, "Which country does this flag belong to?")) : numberOfTypesOfQuestion === 2 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.region), " is the region of ?"));
+  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")) : numberOfTypesOfQuestion === 2 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.region), " is the region of ?"));
 }
 
 var _default = Questions;
@@ -29884,11 +29884,12 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Header({
-  handleStartBtn
+  handleStartBtn,
+  showStartBtn
 }) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), showStartBtn && /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: handleStartBtn,
     className: "btn-start"
@@ -29997,7 +29998,8 @@ function App() {
   const [showResults, setShowResults] = (0, _react.useState)(false);
   const [startGame, setStartGame] = (0, _react.useState)(false);
   const [numberOfTypesOfQuestion, setNumOfTypesOfQuestion] = (0, _react.useState)(0);
-  const correctAnswer = (0, _react.useRef)(null); // ftech the data from the API
+  const correctAnswer = (0, _react.useRef)(null);
+  const [showStartBtn, setShowStartBtn] = (0, _react.useState)(true); // ftech the data from the API
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");
@@ -30034,6 +30036,7 @@ function App() {
   function handleStartBtn() {
     setStartGame(true);
     fetchCountries();
+    setShowStartBtn(false);
   } // This function will check whatever answer has a user clicked and say if it's correct or not
 
 
@@ -30065,8 +30068,7 @@ function App() {
   function handleClickNext() {
     if (isCorrect) {
       setShowResults(false);
-      setDisabledFieldset(false); // fetch a new question
-
+      setDisabledFieldset(false);
       fetchCountries(); // grab a question random again and be able to change them from time to time
 
       setNumOfTypesOfQuestion(Math.floor(Math.random() * 3)); // reset the className and set them into the default styles
@@ -30093,8 +30095,9 @@ function App() {
     setIsCorrect('');
     setDisabledFieldset(false);
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, {
-    handleStartBtn: handleStartBtn
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, {
+    handleStartBtn: handleStartBtn,
+    showStartBtn: showStartBtn
   }), /*#__PURE__*/_react.default.createElement("main", null, showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
     score: score,
     handleBtnTryAgain: handleBtnTryAgain
