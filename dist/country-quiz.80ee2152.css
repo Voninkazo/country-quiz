@@ -48,8 +48,8 @@ h4 {
   margin-left: -50px;
   background: #FFFFFF;
   border-radius: 24px;
+  width: 464px;
   padding: 20px;
-  width: 300px;
   margin-bottom: 2rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
@@ -68,15 +68,16 @@ button {
   outline: none;
 }
 
-.content {
-  position: relative;
+.question-container {
+  padding-block-start: calc(68px - 15px);
 }
+
 .content img {
   position: absolute;
-  top: -367%;
-  right: -7%;
-  width: 90px;
-  height: 93px;
+  top: -8%;
+  right: 0%;
+  width: 162px;
+  height: 116px;
 }
 
 .btn-country {

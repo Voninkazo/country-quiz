@@ -4,7 +4,7 @@ import Questions from './Components/Questions';
 import NextButton from './Components/NextButton';
 import Header from './Components/Header';
 import Results from './pages/PopupResult';
-import AdventureImg from './Components/AdventureImg';
+import HeaderImg from './Components/HeaderImg';
 
 
 function App() {
@@ -136,7 +136,7 @@ function App() {
             />
         :  startGame ? 
         <div className="quiz-container">
-            <AdventureImg />
+            <HeaderImg />
             <Questions 
             randomCountry={randomCountry}
             numberOfTypesOfQuestion={numberOfTypesOfQuestion}

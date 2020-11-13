@@ -2,7 +2,7 @@ import React from 'react';
 
 function Questions({ randomCountry,numberOfTypesOfQuestion}) {
     return(
-        <div>
+        <div className="question-container">
             {numberOfTypesOfQuestion === 0 ?
             <div>
                  <img src={randomCountry.flag} className="flag"/>

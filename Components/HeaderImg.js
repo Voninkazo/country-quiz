@@ -1,7 +1,7 @@
 import React from 'react';
 import ImgSrc from '../undraw_adventure_4hum.svg';
 
-function AdventureImg() {
+function HeaderImg() {
     return (
         <div  className="content">
             <img src={ImgSrc} alt="img"/>
@@ -9,4 +9,4 @@ function AdventureImg() {
     )
 }
 
-export default AdventureImg;
+export default HeaderImg;
