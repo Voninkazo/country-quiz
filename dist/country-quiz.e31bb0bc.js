@@ -29998,8 +29998,8 @@ function App() {
   const [showResults, setShowResults] = (0, _react.useState)(false);
   const [startGame, setStartGame] = (0, _react.useState)(false);
   const [numberOfTypesOfQuestion, setNumOfTypesOfQuestion] = (0, _react.useState)(0);
-  const correctAnswer = (0, _react.useRef)(null);
-  const [showStartBtn, setShowStartBtn] = (0, _react.useState)(true); // ftech the data from the API
+  const [showStartBtn, setShowStartBtn] = (0, _react.useState)(true);
+  const correctAnswer = (0, _react.useRef)(null); // ftech the data from the API
 
   const fetchCountries = async () => {
     const info = await fetch("https://restcountries.eu/rest/v2/all");

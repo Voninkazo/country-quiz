@@ -1,3 +1,8 @@
+:root {
+    --vertical-btn-padding: 1rem;
+    --horizontal-btn-padding: 2rem;
+}
+
 html {
     font-family: "Open Sans";
     font-size: 16px;
@@ -26,6 +31,13 @@ h1 {
     color: #F2F2F2;
 }
 
+h3 {
+    color: #1D355D;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+}
+
 h4 {
     font-weight: bold;
     font-size: 48px;
@@ -36,11 +48,9 @@ h4 {
     padding-bottom: 1rem;
 }
 
-h3 {
-    color: #1D355D;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 36px;
+#root {
+    max-width: 1114px;
+    margin: auto;
 }
 
 .header-container {
@@ -149,11 +159,6 @@ button {
     }
 }
 
-#root {
-    max-width: 1114px;
-    margin: auto;
-}
-
 .next-btn-container {
     text-align: right;
 }
@@ -162,7 +167,7 @@ button {
     background: #F9A826;
     box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
     border-radius: 12px;
-    padding: 1rem 2rem;
+    padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
     border: none;
     margin-top: 1rem;
     font-weight: bold;
@@ -181,7 +186,7 @@ button {
     color: #1D355D;
     background-color: white;
     margin-top: 71px;
-    padding: 1rem 2rem;
+    padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
 }
 
 .btn-try-again:hover {
@@ -190,7 +195,7 @@ button {
 }
 
 .btn-start {
-    padding: 1rem 2rem;
+    padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
     margin-bottom: 1rem;
     font-size: 18px;
     line-height: 27px;
@@ -206,12 +211,8 @@ b {
     line-height: 32px;
 }
 
-.correct {
-    background-image: url(./icons/check-tick.png);
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
-    background-color: #60BF88;
+.correct,
+.incorrect {
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 25px;
@@ -221,23 +222,19 @@ b {
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.correct {
+    background-image: url(./icons/check-tick.png);
+    background-color: #60BF88;
 }
 
 .incorrect {
     background-image: url(./icons//wrong.svg);
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    color: #FFFFFF;
     background-color: #EA8282;
-    background-size: 20px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-top: 25px;
-    box-sizing: border-box;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
 }
 
 @media (min-width: 768px) {

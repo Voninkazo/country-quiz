@@ -17,8 +17,8 @@ function App() {
     const [showResults,setShowResults] = useState(false);
     const [startGame,setStartGame] = useState(false);
     const [numberOfTypesOfQuestion,setNumOfTypesOfQuestion] = useState(0);
-    const correctAnswer = useRef(null);
     const [showStartBtn,setShowStartBtn] = useState(true);
+    const correctAnswer = useRef(null);
 
     // ftech the data from the API
     const fetchCountries = async() => {
