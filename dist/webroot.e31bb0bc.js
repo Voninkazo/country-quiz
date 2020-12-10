@@ -29772,7 +29772,94 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"Components/Answers.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../Components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header({
+  handleStartBtn,
+  showStartBtn
+}) {
+  return /*#__PURE__*/_react.default.createElement("header", {
+    className: "header-container"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), showStartBtn && /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: handleStartBtn,
+    className: "btn-start"
+  }, "Click to start"));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"images/winner.svg":[function(require,module,exports) {
+module.exports = "/winner.03831ed7.svg";
+},{}],"../pages/PopupResult.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _winner = _interopRequireDefault(require("../webroot/images/winner.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function PopupResults({
+  score,
+  handleBtnTryAgain
+}) {
+  return /*#__PURE__*/_react.default.createElement("section", {
+    className: "popup"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _winner.default,
+    alt: "img"
+  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: handleBtnTryAgain,
+    className: "btn-try-again"
+  }, "Try again"));
+}
+
+var _default = PopupResults;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"../Components/Questions.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Questions({
+  randomCountry,
+  numberOfTypesOfQuestion
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "question-container"
+  }, numberOfTypesOfQuestion === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomCountry.flag,
+    className: "flag"
+  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")) : numberOfTypesOfQuestion === 2 ? /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.capital, " is the capital of ?") : /*#__PURE__*/_react.default.createElement("h3", null, randomCountry.region, " is the region of ?"));
+}
+
+var _default = Questions;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"Components/Answers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29817,7 +29904,9 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/Questions.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"images/undraw_adventure.svg":[function(require,module,exports) {
+module.exports = "/undraw_adventure.a775d132.svg";
+},{}],"../Components/HeaderImg.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29827,23 +29916,22 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _undraw_adventure = _interopRequireDefault(require("../webroot/images/undraw_adventure.svg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Questions({
-  randomCountry,
-  numberOfTypesOfQuestion
-}) {
+function HeaderImg() {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "question-container"
-  }, numberOfTypesOfQuestion === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: randomCountry.flag,
-    className: "flag"
-  }), /*#__PURE__*/_react.default.createElement("h3", null, "Which country does this flag belong to?")) : numberOfTypesOfQuestion === 2 ? /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.capital), " is the capital of ?") : /*#__PURE__*/_react.default.createElement("h3", null, /*#__PURE__*/_react.default.createElement("em", null, randomCountry.region), " is the region of ?"));
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_adventure.default,
+    alt: "img"
+  }));
 }
 
-var _default = Questions;
+var _default = HeaderImg;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/NextButton.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../webroot/images/undraw_adventure.svg":"images/undraw_adventure.svg"}],"Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29871,7 +29959,7 @@ function NextButton({
 
 var _default = NextButton;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"../Components/Quiz.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29881,85 +29969,49 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _Questions = _interopRequireDefault(require("./Questions"));
+
+var _Answers = _interopRequireDefault(require("./Answers"));
+
+var _HeaderImg = _interopRequireDefault(require("./HeaderImg"));
+
+var _NextButton = _interopRequireDefault(require("./NextButton"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Header({
-  handleStartBtn,
-  showStartBtn
+function Quiz({
+  randomCountry,
+  numberOfTypesOfQuestion,
+  checkAnswer,
+  randomAnswerOptions,
+  disbledFieldset,
+  correctAnswer,
+  showNextBtn,
+  handleClickNext,
+  isCorrect,
+  fetchCountries
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), showStartBtn && /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: handleStartBtn,
-    className: "btn-start"
-  }, "Click to start"));
+  return /*#__PURE__*/_react.default.createElement("section", {
+    className: "quiz-container"
+  }, /*#__PURE__*/_react.default.createElement(_HeaderImg.default, null), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+    randomCountry: randomCountry,
+    numberOfTypesOfQuestion: numberOfTypesOfQuestion
+  }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
+    disbledFieldset: disbledFieldset,
+    randomAnswerOptions: randomAnswerOptions,
+    randomCountry: randomCountry,
+    checkAnswer: checkAnswer,
+    correctAnswer: correctAnswer
+  }), showNextBtn ? /*#__PURE__*/_react.default.createElement(_NextButton.default, {
+    handleClickNext: handleClickNext,
+    isCorrect: isCorrect,
+    fetchCountries: fetchCountries
+  }) : "");
 }
 
-var _default = Header;
+var _default = Quiz;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"images/winner.svg":[function(require,module,exports) {
-module.exports = "/winner.03831ed7.svg";
-},{}],"../pages/PopupResult.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _winner = _interopRequireDefault(require("../webroot/images/winner.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Results({
-  score,
-  handleBtnTryAgain
-}) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "popup"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _winner.default,
-    alt: "img"
-  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: handleBtnTryAgain,
-    className: "btn-try-again"
-  }, "Try again"));
-}
-
-var _default = Results;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"images/undraw_adventure.svg":[function(require,module,exports) {
-module.exports = "/undraw_adventure.a775d132.svg";
-},{}],"../Components/HeaderImg.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _undraw_adventure = _interopRequireDefault(require("../webroot/images/undraw_adventure.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function HeaderImg() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "content"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _undraw_adventure.default,
-    alt: "img"
-  }));
-}
-
-var _default = HeaderImg;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../webroot/images/undraw_adventure.svg":"images/undraw_adventure.svg"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"Components/Answers.js","./HeaderImg":"../Components/HeaderImg.js","./NextButton":"Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29969,17 +30021,11 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Answers = _interopRequireDefault(require("./Components/Answers"));
-
-var _Questions = _interopRequireDefault(require("./Components/Questions"));
-
-var _NextButton = _interopRequireDefault(require("./Components/NextButton"));
-
 var _Header = _interopRequireDefault(require("./Components/Header"));
 
 var _PopupResult = _interopRequireDefault(require("./pages/PopupResult"));
 
-var _HeaderImg = _interopRequireDefault(require("./Components/HeaderImg"));
+var _Quiz = _interopRequireDefault(require("./Components/Quiz"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30006,8 +30052,7 @@ function App() {
     const data = await info.json();
     setCountries(data);
     getRandomCountry();
-    console.log(data);
-  }; // get the answers options and questions rnadomly 
+  }; // ************ GET RANDOM QUIZ QUESTIONS **************
 
 
   function getRandomCountry() {
@@ -30030,14 +30075,14 @@ function App() {
     setDisabledFieldset(false);
     setShowNextBtn(false);
     setShowResults(false);
-  } // handel strat button to start the game
+  } // ******* HANDLE START BUTTON **********
 
 
   function handleStartBtn() {
     setStartGame(true);
     fetchCountries();
     setShowStartBtn(false);
-  } // This function will check whatever answer has a user clicked and say if it's correct or not
+  } //*******CHECK ANSWERS *************
 
 
   function checkAnswer(e) {
@@ -30061,8 +30106,7 @@ function App() {
       setIsCorrect(false);
       console.log("incorrect");
     }
-  } // Here we set a few conditions when the next button is clicked:
-  // change bg color of buttons 
+  } // ********** HANDLE NEXT BUTTON *************
 
 
   function handleClickNext() {
@@ -30079,7 +30123,8 @@ function App() {
 
       setShowResults(true);
     }
-  } // When we clcik the try button, set the score into 0 again and fetch another question and close the result
+  } // ****** HANDLE BUTTON TRY AGAIN ***************
+  // When we clcik the try button, set the score into 0 again and fetch another question and close the result
 
 
   function handleBtnTryAgain() {
@@ -30098,30 +30143,26 @@ function App() {
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, {
     handleStartBtn: handleStartBtn,
     showStartBtn: showStartBtn
-  }), /*#__PURE__*/_react.default.createElement("main", null, showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
+  }), showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
     score: score,
     handleBtnTryAgain: handleBtnTryAgain
-  }) : startGame ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement(_HeaderImg.default, null), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+  }) : startGame ? /*#__PURE__*/_react.default.createElement(_Quiz.default, {
     randomCountry: randomCountry,
-    numberOfTypesOfQuestion: numberOfTypesOfQuestion
-  }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
+    numberOfTypesOfQuestion: numberOfTypesOfQuestion,
     checkAnswer: checkAnswer,
-    randomCountry: randomCountry,
     randomAnswerOptions: randomAnswerOptions,
     disbledFieldset: disbledFieldset,
-    correctAnswer: correctAnswer
-  }), showNextBtn && /*#__PURE__*/_react.default.createElement(_NextButton.default, {
+    correctAnswer: correctAnswer,
+    showNextBtn: showNextBtn,
     handleClickNext: handleClickNext,
     isCorrect: isCorrect,
     fetchCountries: fetchCountries
-  })) : "", "       "));
+  }) : "");
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Answers":"Components/Answers.js","./Components/Questions":"Components/Questions.js","./Components/NextButton":"Components/NextButton.js","./Components/Header":"Components/Header.js","./pages/PopupResult":"../pages/PopupResult.js","./Components/HeaderImg":"../Components/HeaderImg.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Components/Header":"../Components/Header.js","./pages/PopupResult":"../pages/PopupResult.js","./Components/Quiz":"../Components/Quiz.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30133,7 +30174,7 @@ var _App = _interopRequireDefault(require("../App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","../App":"App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","../App":"../App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -9,9 +9,9 @@ function Questions({ randomCountry,numberOfTypesOfQuestion}) {
                 <h3>Which country does this flag belong to?</h3>
             </div>
             : numberOfTypesOfQuestion === 2 ?
-             <h3><em>{randomCountry.capital}</em> is the capital of ?</h3>
+             <h3>{randomCountry.capital} is the capital of ?</h3>
              : 
-            <h3><em>{randomCountry.region}</em> is the region of ?</h3>
+            <h3>{randomCountry.region} is the region of ?</h3>
             }
         </div>
     )

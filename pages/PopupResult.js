@@ -2,15 +2,15 @@ import React from 'react';
 import WinnerImg from '../webroot/images/winner.svg';
 
 
-function Results({score,handleBtnTryAgain}) {
+function PopupResults({score,handleBtnTryAgain}) {
     return(
-          <div className="popup">
+          <section className="popup">
               <img src={WinnerImg} alt="img"/>
               <h4>Results</h4>
               <p>You got <b>{score}</b> correct answers</p>
               <button type="button" onClick={handleBtnTryAgain} className="btn-try-again">Try again</button>
-            </div>
+          </section>
     )
 }
 
-export default Results;
+export default PopupResults;
