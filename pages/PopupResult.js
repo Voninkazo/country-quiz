@@ -1,5 +1,5 @@
 import React from 'react';
-import WinnerImg from '../winner.svg';
+import WinnerImg from '../webroot/images/winner.svg';
 
 
 function Results({score,handleBtnTryAgain}) {

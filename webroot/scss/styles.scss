@@ -4,20 +4,12 @@
 }
 
 html {
-    font-family: "Open Sans";
+    font-family: "Poppins";
     font-size: 16px;
 }
 
-@font-face {
-    font-family: 'Open Sans';
-    src: url('./fonts/open-sans.woff2') format('woff2'), url('./fonts/open-sans.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
 body {
-    background-image: url(./background.png);
+    background-image: url(../images/background.png);
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: cover 100vh;
@@ -228,12 +220,12 @@ b {
 }
 
 .correct {
-    background-image: url(./icons/check-tick.png);
+    background-image: url(../icons/check-tick.png);
     background-color: #60BF88;
 }
 
 .incorrect {
-    background-image: url(./icons//wrong.svg);
+    background-image: url(../icons/wrong.svg);
     background-color: #EA8282;
 }
 

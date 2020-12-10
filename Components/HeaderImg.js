@@ -1,5 +1,5 @@
 import React from 'react';
-import ImgSrc from '../undraw_adventure_4hum.svg';
+import ImgSrc from '../webroot/images/undraw_adventure.svg'
 
 function HeaderImg() {
     return (
