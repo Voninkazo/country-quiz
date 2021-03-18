@@ -4,7 +4,7 @@
     "description": "Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "parcel webroot/index.html"
     },
     "repository": {
         "type": "git",
@@ -25,6 +25,6 @@
         "last 1 chrome version"
     ],
     "devDependencies": {
-        "sass": "^1.29.0"
+        "sass": "^1.32.8"
     }
 }

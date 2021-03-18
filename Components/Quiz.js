@@ -40,6 +40,7 @@ function Quiz(
         handleClickNext={handleClickNext}
         isCorrect={isCorrect}
         fetchCountries={fetchCountries}
+        showNextBtn={showNextBtn}
         />
        )
        :

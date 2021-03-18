@@ -36,13 +36,11 @@ function App() {
     const firstRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)]
     const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)]
-    const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)]
-
+    
     let randomOptions = [
         firstRandomNum.name,
         secondRandomNum.name,
         randomNum.name,
-        fourthRandomNum.name,
         thirdRandomNum.name
     ]
     // sort the array so that it would be more difficult to get the right answer

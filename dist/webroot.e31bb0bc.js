@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -213,7 +213,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
   return to;
 };
-},{}],"node_modules/react/cjs/react.development.js":[function(require,module,exports) {
+},{}],"../node_modules/react/cjs/react.development.js":[function(require,module,exports) {
 /** @license React v17.0.1
  * react.development.js
  *
@@ -2497,7 +2497,7 @@ if ("development" !== "production") {
     exports.version = ReactVersion;
   })();
 }
-},{"object-assign":"node_modules/object-assign/index.js"}],"node_modules/react/index.js":[function(require,module,exports) {
+},{"object-assign":"../node_modules/object-assign/index.js"}],"../node_modules/react/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -2505,7 +2505,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react.development.js');
 }
-},{"./cjs/react.development.js":"node_modules/react/cjs/react.development.js"}],"node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
+},{"./cjs/react.development.js":"../node_modules/react/cjs/react.development.js"}],"../node_modules/scheduler/cjs/scheduler.development.js":[function(require,module,exports) {
 /** @license React v0.20.1
  * scheduler.development.js
  *
@@ -3348,7 +3348,7 @@ if ("development" !== "production") {
     exports.unstable_wrapCallback = unstable_wrapCallback;
   })();
 }
-},{}],"node_modules/scheduler/index.js":[function(require,module,exports) {
+},{}],"../node_modules/scheduler/index.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -3356,7 +3356,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/scheduler.development.js');
 }
-},{"./cjs/scheduler.development.js":"node_modules/scheduler/cjs/scheduler.development.js"}],"node_modules/scheduler/cjs/scheduler-tracing.development.js":[function(require,module,exports) {
+},{"./cjs/scheduler.development.js":"../node_modules/scheduler/cjs/scheduler.development.js"}],"../node_modules/scheduler/cjs/scheduler-tracing.development.js":[function(require,module,exports) {
 /** @license React v0.20.1
  * scheduler-tracing.development.js
  *
@@ -3704,7 +3704,7 @@ if ("development" !== "production") {
     exports.unstable_wrap = unstable_wrap;
   })();
 }
-},{}],"node_modules/scheduler/tracing.js":[function(require,module,exports) {
+},{}],"../node_modules/scheduler/tracing.js":[function(require,module,exports) {
 'use strict';
 
 if ("development" === 'production') {
@@ -3712,7 +3712,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/scheduler-tracing.development.js');
 }
-},{"./cjs/scheduler-tracing.development.js":"node_modules/scheduler/cjs/scheduler-tracing.development.js"}],"node_modules/react-dom/cjs/react-dom.development.js":[function(require,module,exports) {
+},{"./cjs/scheduler-tracing.development.js":"../node_modules/scheduler/cjs/scheduler-tracing.development.js"}],"../node_modules/react-dom/cjs/react-dom.development.js":[function(require,module,exports) {
 /** @license React v17.0.1
  * react-dom.development.js
  *
@@ -29734,7 +29734,7 @@ if ("development" !== "production") {
     exports.version = ReactVersion;
   })();
 }
-},{"react":"node_modules/react/index.js","object-assign":"node_modules/object-assign/index.js","scheduler":"node_modules/scheduler/index.js","scheduler/tracing":"node_modules/scheduler/tracing.js"}],"node_modules/react-dom/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","object-assign":"../node_modules/object-assign/index.js","scheduler":"../node_modules/scheduler/index.js","scheduler/tracing":"../node_modules/scheduler/tracing.js"}],"../node_modules/react-dom/index.js":[function(require,module,exports) {
 'use strict';
 
 function checkDCE() {
@@ -29772,7 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../Components/Header.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../Components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29799,7 +29799,7 @@ function Header({
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"images/winner.svg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"images/winner.svg":[function(require,module,exports) {
 module.exports = "/winner.03831ed7.svg";
 },{}],"../pages/PopupResult.js":[function(require,module,exports) {
 "use strict";
@@ -29833,7 +29833,7 @@ function PopupResults({
 
 var _default = PopupResults;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"../Components/Questions.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"../Components/Questions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29859,7 +29859,7 @@ function Questions({
 
 var _default = Questions;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"Components/Answers.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../Components/Answers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29904,7 +29904,7 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"images/undraw_adventure.svg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"images/undraw_adventure.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure.a775d132.svg";
 },{}],"../Components/HeaderImg.js":[function(require,module,exports) {
 "use strict";
@@ -29931,7 +29931,7 @@ function HeaderImg() {
 
 var _default = HeaderImg;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../webroot/images/undraw_adventure.svg":"images/undraw_adventure.svg"}],"Components/NextButton.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../webroot/images/undraw_adventure.svg":"images/undraw_adventure.svg"}],"../Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29959,7 +29959,7 @@ function NextButton({
 
 var _default = NextButton;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"../Components/Quiz.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../Components/Quiz.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30005,13 +30005,14 @@ function Quiz({
   }), showNextBtn ? /*#__PURE__*/_react.default.createElement(_NextButton.default, {
     handleClickNext: handleClickNext,
     isCorrect: isCorrect,
-    fetchCountries: fetchCountries
+    fetchCountries: fetchCountries,
+    showNextBtn: showNextBtn
   }) : "");
 }
 
 var _default = Quiz;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"Components/Answers.js","./HeaderImg":"../Components/HeaderImg.js","./NextButton":"Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"../Components/Answers.js","./HeaderImg":"../Components/HeaderImg.js","./NextButton":"../Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30063,8 +30064,7 @@ function App() {
     const firstRandomNum = countries[Math.floor(Math.random() * countries.length)];
     const secondRandomNum = countries[Math.floor(Math.random() * countries.length)];
     const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    const fourthRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    let randomOptions = [firstRandomNum.name, secondRandomNum.name, randomNum.name, fourthRandomNum.name, thirdRandomNum.name]; // sort the array so that it would be more difficult to get the right answer
+    let randomOptions = [firstRandomNum.name, secondRandomNum.name, randomNum.name, thirdRandomNum.name]; // sort the array so that it would be more difficult to get the right answer
 
     randomOptions.sort(() => {
       return 0.5 - Math.random();
@@ -30162,7 +30162,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Components/Header":"../Components/Header.js","./pages/PopupResult":"../pages/PopupResult.js","./Components/Quiz":"../Components/Quiz.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Components/Header":"../Components/Header.js","./pages/PopupResult":"../pages/PopupResult.js","./Components/Quiz":"../Components/Quiz.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30174,7 +30174,7 @@ var _App = _interopRequireDefault(require("../App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","../App":"../App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","../App":"../App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -30202,7 +30202,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52526" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54477" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
