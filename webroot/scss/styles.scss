@@ -28,6 +28,7 @@ h3 {
     font-weight: bold;
     font-size: 24px;
     line-height: 36px;
+    margin: 0;
 }
 
 h4 {
@@ -46,22 +47,18 @@ h4 {
 }
 
 .header-container {
-    padding-left: 5rem;
-    text-align: left;
+    text-align: center;
 }
 
 .quiz-container {
-    position: absolute;
-    top: 22%;
-    left: 16%;
-    margin-top: -50px;
-    margin-left: -50px;
+    position: relative;
     background: #FFFFFF;
     border-radius: 24px;
-    margin-bottom: 300px;
-    width: 464px;
+    max-width: 375px;
+    margin: auto;
     padding: 20px;
     margin-bottom: 2rem;
+    transition: max-width 0.5s;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
@@ -86,10 +83,8 @@ button {
 .content {
     img {
         position: absolute;
-        top: -8%;
-        right: 0%;
-        width: 162px;
-        height: 116px;
+        bottom: -31px;
+        right: -20px;
     }
 }
 
@@ -232,9 +227,10 @@ b {
 @media (min-width: 768px) {
     .quiz-container,
     .popup {
-        left: 45%;
+        max-width: 464px;
+        margin: auto;
     }
-    .header-container {
-        text-align: center;
-    }
+    // .header-container {
+    //     text-align: center;
+    // }
 }
