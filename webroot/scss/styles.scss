@@ -43,8 +43,8 @@ h4 {
 }
 
 #root {
-    max-width: 1114px;
-    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .header-container {
@@ -232,5 +232,12 @@ b {
     }
     .header-container {
         max-width: 484px;
+    }
+}
+
+@media (min-width: 1114px) {
+    #root {
+        max-width: 1114px;
+        margin: auto;
     }
 }
