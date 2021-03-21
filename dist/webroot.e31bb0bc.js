@@ -29887,19 +29887,19 @@ function Answers({
     ref: randomAnswerOptions[0] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[0]
-  }, randomAnswerOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", null, "A"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[1] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[1]
-  }, randomAnswerOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+  }, "B ", randomAnswerOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[2] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[2]
-  }, randomAnswerOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+  }, "C ", randomAnswerOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[3] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[3]
-  }, randomAnswerOptions[3]))));
+  }, "D  ", randomAnswerOptions[3]))));
 }
 
 var _default = Answers;

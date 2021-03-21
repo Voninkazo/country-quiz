@@ -10,7 +10,7 @@ function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,
                     className="btn-country" 
                     data-value={randomAnswerOptions[0]}
                     >
-                     {randomAnswerOptions[0]}
+                    <span>A</span> <span>{randomAnswerOptions[0]}</span>
                     </button>
 
                     <button 
@@ -18,7 +18,7 @@ function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,
                     className="btn-country" 
                     data-value={randomAnswerOptions[1]}
                     >
-                      {randomAnswerOptions[1]}
+                     B {randomAnswerOptions[1]}
                     </button>
 
                     <button 
@@ -26,7 +26,7 @@ function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,
                     className="btn-country" 
                     data-value={randomAnswerOptions[2]}
                     >
-                      {randomAnswerOptions[2]}
+                     C {randomAnswerOptions[2]}
                     </button>
 
                     <button 
@@ -34,7 +34,7 @@ function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,
                     className="btn-country" 
                     data-value={randomAnswerOptions[3]}
                     >
-                       {randomAnswerOptions[3]}
+                     D  {randomAnswerOptions[3]}
                     </button>
                 </fieldset>
             </form>

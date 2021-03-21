@@ -103,6 +103,9 @@ button {
     font-weight: 500;
     font-size: 18px;
     line-height: 27px;
+    display: flex;
+    flex-direction: row;
+    gap: 46px;
 }
 
 .btn-country:hover {

@@ -82,7 +82,7 @@ function App() {
         // show the correct answer button into green
         correctAnswer.current.className ="correct";
         setIsCorrect(false);    
-        console.log("incorrect");
+        console.log("incorrect");   
     }
 }
 
