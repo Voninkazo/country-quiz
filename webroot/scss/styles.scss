@@ -106,6 +106,9 @@ button {
     display: flex;
     flex-direction: row;
     gap: 46px;
+    .letter {
+        padding-left: 19px;
+    }
 }
 
 .btn-country:hover {

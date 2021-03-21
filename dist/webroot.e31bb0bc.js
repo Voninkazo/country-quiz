@@ -29887,19 +29887,27 @@ function Answers({
     ref: randomAnswerOptions[0] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[0]
-  }, /*#__PURE__*/_react.default.createElement("span", null, "A"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "letter"
+  }, "A"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[1] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[1]
-  }, "B ", randomAnswerOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "letter"
+  }, "B"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[2] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[2]
-  }, "C ", randomAnswerOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "letter"
+  }, "C"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[2])), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[3] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[3]
-  }, "D  ", randomAnswerOptions[3]))));
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "letter"
+  }, "D"), "  ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[3])))));
 }
 
 var _default = Answers;
@@ -30202,7 +30210,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60266" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54472" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
