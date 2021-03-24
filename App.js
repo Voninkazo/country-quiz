@@ -122,7 +122,7 @@ function App() {
     },[])
 
     return (
-        <>
+        <div className="container">
             <Header 
             handleStartBtn={handleStartBtn}
             showStartBtn={showStartBtn}
@@ -150,10 +150,12 @@ function App() {
             fetchCountries={fetchCountries}
             />
 
-            : ""
+            :
+          
+                <button type="button" onClick={handleStartBtn} className="btn-start">Click to start</button>
 
             }  
-        </>
+        </div>
     )
 }
 

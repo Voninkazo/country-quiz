@@ -29790,11 +29790,7 @@ function Header({
 }) {
   return /*#__PURE__*/_react.default.createElement("header", {
     className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"), showStartBtn && /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: handleStartBtn,
-    className: "btn-start"
-  }, "Click to start"));
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"));
 }
 
 var _default = Header;
@@ -29889,25 +29885,25 @@ function Answers({
     "data-value": randomAnswerOptions[0]
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "letter"
-  }, "A"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[0])), /*#__PURE__*/_react.default.createElement("button", {
+  }, "A"), randomAnswerOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[1] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[1]
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "letter"
-  }, "B"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[1])), /*#__PURE__*/_react.default.createElement("button", {
+  }, "B"), randomAnswerOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[2] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[2]
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "letter"
-  }, "C"), " ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[2])), /*#__PURE__*/_react.default.createElement("button", {
+  }, "C"), randomAnswerOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[3] === randomCountry.name ? correctAnswer : null,
     className: "btn-country",
     "data-value": randomAnswerOptions[3]
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "letter"
-  }, "D"), "  ", /*#__PURE__*/_react.default.createElement("span", null, randomAnswerOptions[3])))));
+  }, "D"), randomAnswerOptions[3]))));
 }
 
 var _default = Answers;
@@ -30148,7 +30144,9 @@ function App() {
     setIsCorrect('');
     setDisabledFieldset(false);
   }, []);
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Header.default, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, {
     handleStartBtn: handleStartBtn,
     showStartBtn: showStartBtn
   }), showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
@@ -30165,7 +30163,11 @@ function App() {
     handleClickNext: handleClickNext,
     isCorrect: isCorrect,
     fetchCountries: fetchCountries
-  }) : "");
+  }) : /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: handleStartBtn,
+    className: "btn-start"
+  }, "Click to start"));
 }
 
 var _default = App;
@@ -30210,7 +30212,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62720" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
