@@ -40,8 +40,9 @@ body {
   background-image: url(/background.0063873b.png);
   background-position: 0 0;
   background-repeat: no-repeat;
-  background-size: 100vw 1000px;
-  margin: 0;
+  background-size: 141% 100%;
+  position: relative;
+  height: 1090px;
 }
 
 h1 {
@@ -59,6 +60,7 @@ h3 {
   font-size: 24px;
   line-height: 36px;
   margin: 0;
+  padding-top: 15px;
 }
 
 h4 {
@@ -82,21 +84,36 @@ h4 {
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   max-width: 464px;
   margin: 0 auto;
 }
+.container h1 {
+  align-self: start;
+}
 
 .quiz-container {
-  position: relative;
-  background: #FFFFFF;
+  background-color: #ffffff;
+  padding: 32px;
+  padding-top: 68px;
   border-radius: 24px;
-  max-width: 375px;
-  margin: auto;
-  padding: 20px;
-  margin-bottom: 2rem;
-  transition: max-width 0.5s;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.quiz-container::before {
+  content: "";
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  top: -10%;
+  left: 69%;
+  background-image: url(/undraw_adventure.a775d132.svg);
+  background-position: right 100%;
+  background-repeat: no-repeat;
+  background-size: 150px 100px;
 }
 
 .btn-container {
@@ -106,21 +123,13 @@ h4 {
 
 fieldset {
   border: none;
+  padding: 0;
+  margin: 0;
 }
 
 button {
   cursor: pointer;
   outline: none;
-}
-
-.question-container {
-  padding-block-start: calc(68px - 15px);
-}
-
-.content img {
-  position: absolute;
-  top: -60px;
-  right: 0;
 }
 
 .btn-country {
@@ -129,7 +138,7 @@ button {
   box-sizing: border-box;
   border-radius: 12px;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 14px;
   margin-top: 25px;
   color: rgba(96, 102, 208, 0.8);
   font-weight: 500;
@@ -138,6 +147,7 @@ button {
   display: flex;
   flex-direction: row;
   gap: 46px;
+  padding-left: 0;
 }
 
 .letter {
@@ -166,7 +176,7 @@ button {
 
 .popup {
   background-color: white;
-  max-width: 375px;
+  width: 400px;
   margin: auto;
   padding-bottom: 33px;
   padding-top: 49px;
@@ -261,18 +271,6 @@ b {
 .incorrect {
   background-image: url(/wrong.7f7ff515.svg);
   background-color: #EA8282;
-}
-
-@media (min-width: 768px) {
-  .quiz-container,
-.popup {
-    max-width: 464px;
-    margin: auto;
-  }
-
-  .header-container {
-    max-width: 484px;
-  }
 }
 
 /*# sourceMappingURL=/_index.722ae79c.css.map */

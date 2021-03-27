@@ -29874,7 +29874,7 @@ function Answers({
   checkAnswer,
   correctAnswer
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement("form", {
     onClick: e => checkAnswer(e)
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
     disabled: disbledFieldset,
@@ -29903,7 +29903,7 @@ function Answers({
     "data-value": randomAnswerOptions[3]
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "letter"
-  }, "D"), randomAnswerOptions[3]))));
+  }, "D"), randomAnswerOptions[3])));
 }
 
 var _default = Answers;
@@ -29925,12 +29925,7 @@ var _undraw_adventure = _interopRequireDefault(require("../webroot/images/undraw
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function HeaderImg() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "content"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _undraw_adventure.default,
-    alt: "img"
-  }));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
 }
 
 var _default = HeaderImg;
@@ -30212,7 +30207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62720" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

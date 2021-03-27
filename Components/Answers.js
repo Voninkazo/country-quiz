@@ -2,7 +2,6 @@ import React from 'react';
 
 function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,correctAnswer}) {
     return(
-        <div>
             <form onClick={(e) =>checkAnswer(e)}>
                 <fieldset disabled={disbledFieldset} className="btn-container">
                     <button 
@@ -38,7 +37,6 @@ function Answers({disbledFieldset,randomAnswerOptions,randomCountry,checkAnswer,
                     </button>
                 </fieldset>
             </form>
-        </div>
     )
 }
 
