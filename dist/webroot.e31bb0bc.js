@@ -29903,29 +29903,7 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"images/undraw_adventure.svg":[function(require,module,exports) {
-module.exports = "/undraw_adventure.a775d132.svg";
-},{}],"../Components/HeaderImg.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _undraw_adventure = _interopRequireDefault(require("../webroot/images/undraw_adventure.svg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function HeaderImg() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
-}
-
-var _default = HeaderImg;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../webroot/images/undraw_adventure.svg":"images/undraw_adventure.svg"}],"../Components/NextButton.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../Components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29965,8 +29943,6 @@ var _Questions = _interopRequireDefault(require("./Questions"));
 
 var _Answers = _interopRequireDefault(require("./Answers"));
 
-var _HeaderImg = _interopRequireDefault(require("./HeaderImg"));
-
 var _NextButton = _interopRequireDefault(require("./NextButton"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29985,7 +29961,7 @@ function Quiz({
 }) {
   return /*#__PURE__*/_react.default.createElement("section", {
     className: "quiz-container"
-  }, /*#__PURE__*/_react.default.createElement(_HeaderImg.default, null), /*#__PURE__*/_react.default.createElement(_Questions.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Questions.default, {
     randomCountry: randomCountry,
     numberOfTypesOfQuestion: numberOfTypesOfQuestion
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
@@ -30004,7 +29980,7 @@ function Quiz({
 
 var _default = Quiz;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"../Components/Answers.js","./HeaderImg":"../Components/HeaderImg.js","./NextButton":"../Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"../Components/Answers.js","./NextButton":"../Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30083,20 +30059,24 @@ function App() {
     setShowNextBtn(true);
     const winCountry = randomCountry.name;
     const userGuesss = e.target.dataset.value;
+    const buttons = Array.from(document.querySelectorAll('.btn-country'));
+    console.log(buttons);
+    buttons.forEach(button => button.setAttribute('id', 'button'));
 
     if (winCountry === userGuesss) {
       setIsCorrect(true);
       setScore(prev => prev + 1); // change the className of the clicked button if it's the correct answer
 
       e.target.className = "correct";
-      console.log("correct");
+      e.target.setAttribute('id', 'correct');
     } else {
       // change the className the clicked button into red if it's incorrect
-      e.target.className = "incorrect"; // show the correct answer button into green
+      e.target.className = "incorrect";
+      e.target.setAttribute('id', 'incorrect'); // show the correct answer button into green
 
       correctAnswer.current.className = "correct";
+      correctAnswer.current.setAttribute('id', 'correct');
       setIsCorrect(false);
-      console.log("incorrect");
     }
   } // ********** HANDLE NEXT BUTTON *************
 
@@ -30111,8 +30091,7 @@ function App() {
 
       correctAnswer.current.className = "btn-country";
     } else {
-      console.log('try again'); // show result
-
+      // show result
       setShowResults(true);
     }
   }

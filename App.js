@@ -68,21 +68,25 @@ function App() {
     setShowNextBtn(true)
     const winCountry = randomCountry.name;
     const userGuesss = e.target.dataset.value;
+    const buttons = Array.from(document.querySelectorAll('.btn-country'));
+    console.log(buttons);
+    buttons.forEach((button => button.setAttribute('id', 'button')));
 
     if(winCountry === userGuesss ){
         setIsCorrect(true)
         setScore(prev => prev + 1);
         // change the className of the clicked button if it's the correct answer
         e.target.className = "correct";
-        console.log("correct");
+        e.target.setAttribute('id', 'correct');
     } 
     else {
         // change the className the clicked button into red if it's incorrect
         e.target.className = "incorrect";
+        e.target.setAttribute('id', 'incorrect');
         // show the correct answer button into green
         correctAnswer.current.className ="correct";
-        setIsCorrect(false);    
-        console.log("incorrect");   
+        correctAnswer.current.setAttribute('id', 'correct');
+        setIsCorrect(false);      
     }
 }
 
@@ -98,7 +102,6 @@ function App() {
             // reset the className and set them into the default styles
             correctAnswer.current.className = "btn-country";
         } else {
-            console.log('try again');
             // show result
             setShowResults(true);
         }

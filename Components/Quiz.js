@@ -2,7 +2,6 @@ import React from 'react';
 
 import Questions from './Questions';
 import Answers from './Answers';
-import HeaderImg from './HeaderImg';
 import NextButton from './NextButton';
 
 function Quiz(
@@ -21,8 +20,6 @@ function Quiz(
 ) {
   return (
    <section className="quiz-container">
-       <HeaderImg />
-
        <Questions 
        randomCountry={randomCountry}
        numberOfTypesOfQuestion={numberOfTypesOfQuestion}

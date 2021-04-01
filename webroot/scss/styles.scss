@@ -15,7 +15,6 @@ body {
     background-size: 141% 100%;
     position: relative;
     height: 1090px;
-    //margin: 0;
 }
 
 h1 {
@@ -25,7 +24,6 @@ h1 {
     text-transform: uppercase;
     color: #F2F2F2;
     margin: 0;
-    //text-align: center;
 }
 
 h3 {
@@ -52,7 +50,6 @@ h4 {
     align-items: center;
     justify-content: center;
     width: 100%;
-    // height: 100vh;
 }
 
 .container {
@@ -61,7 +58,6 @@ h4 {
     align-items: center;
     max-width: 464px;
     margin: 0 auto;
-    // padding-top: 182px;
     h1 {
         align-self: start;
     }
@@ -74,18 +70,9 @@ h4 {
     max-width: 464px;
     margin: 0 auto;
     background-color: #ffffff;
-    background-color: #ffffff;
     padding: 2rem;
     padding-top: 3rem;
-    border-radius: 24px;
     width: 400px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    //padding-bottom: 68px;
-    // padding-top: 68px;
-    // padding-left: 32px;
-    // padding-right: 32px;
     border-radius: 24px;
     position: relative;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -133,7 +120,8 @@ button {
     outline: none;
 }
 
-.btn-country {
+.btn-country,
+#button:hover {
     background: #FFFFFF;
     border: 2px solid rgba(96, 102, 208, 0.7);
     box-sizing: border-box;
@@ -151,14 +139,14 @@ button {
     padding-left: 0;
 }
 
-.letter {
-    padding-left: 19px;
-}
-
 .btn-country:hover {
     color: #FFFFFF;
     background-color: #F9A826;
     transition: 0.1s;
+}
+
+.letter {
+    padding-left: 19px;
 }
 
 .question-quiz {
@@ -262,14 +250,24 @@ b {
     gap: 46px;
 }
 
-.correct {
-    background-image: url(../icons/check-tick.png);
-    background-color: #60BF88;
+#button {
+    cursor: default;
 }
 
-.incorrect {
+.correct,
+#correct:hover {
+    background-image: url(../icons/check-tick.png);
+    background-color: #60BF88;
+    cursor: default;
+    border: none;
+}
+
+.incorrect,
+#incorrect:hover {
     background-image: url(../icons/wrong.svg);
     background-color: #EA8282;
+    cursor: default;
+    border: none;
 }
 
 @media(min-width: 550px) {
