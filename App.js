@@ -104,9 +104,6 @@ function App() {
         }
     }
 
-    // ****** HANDLE BUTTON TRY AGAIN ***************
-
-    // When we clcik the try button, set the score into 0 again and fetch another question and close the result
     function handleBtnTryAgain() {
         setScore(0);
         fetchCountries();
@@ -123,20 +120,18 @@ function App() {
 
     return (
         <div className="container">
-            <Header 
-            handleStartBtn={handleStartBtn}
-            showStartBtn={showStartBtn}
-            />
-
-            {showResults ?
+            <Header />
+            {startGame ?
+            <div>
+            {
+            showResults ?
 
             <PopupResults 
             score={score}
             handleBtnTryAgain={handleBtnTryAgain}
             />
 
-            :  startGame ? 
-
+            :
             <Quiz 
             randomCountry={randomCountry}
             numberOfTypesOfQuestion={numberOfTypesOfQuestion}
@@ -149,11 +144,10 @@ function App() {
             isCorrect={isCorrect}
             fetchCountries={fetchCountries}
             />
-
+            }
+            </div>
             :
-          
                 <button type="button" onClick={handleStartBtn} className="btn-start">Click to start</button>
-
             }  
         </div>
     )

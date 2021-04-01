@@ -59,8 +59,6 @@ h3 {
   font-weight: bold;
   font-size: 24px;
   line-height: 36px;
-  margin: 0;
-  padding-top: 15px;
 }
 
 h4 {
@@ -78,12 +76,12 @@ h4 {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 464px;
   margin: 0 auto;
 }
@@ -92,15 +90,36 @@ h4 {
 }
 
 .quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 464px;
+  margin: 0 auto;
   background-color: #ffffff;
-  padding: 32px;
-  padding-top: 68px;
+  background-color: #ffffff;
+  padding: 2rem;
+  padding-top: 3rem;
   border-radius: 24px;
   width: 400px;
   display: flex;
   flex-direction: column;
   position: relative;
+  border-radius: 24px;
+  position: relative;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.quiz-container form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.quiz-container form button:nth-of-type(1) {
+  margin-top: 0;
+}
+
+.question-container {
+  width: 400px;
 }
 
 .quiz-container::before {
@@ -193,10 +212,6 @@ button {
   padding-bottom: 2rem;
 }
 
-.next-btn-container {
-  text-align: right;
-}
-
 .btn-next {
   background: #F9A826;
   box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
@@ -208,6 +223,7 @@ button {
   font-size: 18px;
   line-height: 27px;
   color: #FFFFFF;
+  align-self: flex-end;
 }
 
 .btn-try-again {
@@ -236,6 +252,7 @@ button {
   background-color: #FFFFFF;
   border: none;
   border-radius: 6px;
+  margin: auto;
 }
 
 b {
@@ -271,6 +288,12 @@ b {
 .incorrect {
   background-image: url(/wrong.7f7ff515.svg);
   background-color: #EA8282;
+}
+
+@media (min-width: 550px) {
+  .container {
+    padding-top: 0;
+  }
 }
 
 /*# sourceMappingURL=/_index.722ae79c.css.map */

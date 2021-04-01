@@ -29784,13 +29784,8 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Header({
-  handleStartBtn,
-  showStartBtn
-}) {
-  return /*#__PURE__*/_react.default.createElement("header", {
-    className: "header-container"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz"));
+function Header() {
+  return /*#__PURE__*/_react.default.createElement("h1", null, "Country Quiz");
 }
 
 var _default = Header;
@@ -29947,9 +29942,7 @@ function NextButton({
   isCorrect,
   getRandomCountry
 }) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "next-btn-container"
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: handleClickNext,
     className: "btn-next"
@@ -30122,9 +30115,7 @@ function App() {
 
       setShowResults(true);
     }
-  } // ****** HANDLE BUTTON TRY AGAIN ***************
-  // When we clcik the try button, set the score into 0 again and fetch another question and close the result
-
+  }
 
   function handleBtnTryAgain() {
     setScore(0);
@@ -30141,13 +30132,10 @@ function App() {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Header.default, {
-    handleStartBtn: handleStartBtn,
-    showStartBtn: showStartBtn
-  }), showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), startGame ? /*#__PURE__*/_react.default.createElement("div", null, showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
     score: score,
     handleBtnTryAgain: handleBtnTryAgain
-  }) : startGame ? /*#__PURE__*/_react.default.createElement(_Quiz.default, {
+  }) : /*#__PURE__*/_react.default.createElement(_Quiz.default, {
     randomCountry: randomCountry,
     numberOfTypesOfQuestion: numberOfTypesOfQuestion,
     checkAnswer: checkAnswer,
@@ -30158,7 +30146,7 @@ function App() {
     handleClickNext: handleClickNext,
     isCorrect: isCorrect,
     fetchCountries: fetchCountries
-  }) : /*#__PURE__*/_react.default.createElement("button", {
+  })) : /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: handleStartBtn,
     className: "btn-start"
@@ -30207,7 +30195,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51092" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49948" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
