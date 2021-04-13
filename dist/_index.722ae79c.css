@@ -301,5 +301,10 @@ b {
     padding-top: 0;
   }
 }
+@media (min-width: 768px) {
+  .container {
+    padding-top: 30px;
+  }
+}
 
 /*# sourceMappingURL=/_index.722ae79c.css.map */
