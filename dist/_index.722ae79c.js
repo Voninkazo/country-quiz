@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -144,12 +144,12 @@ function getBundleURL() {
 }
 
 function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
 }
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/_index.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/_index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\fonts\\poppins.woff2":[["poppins.34056999.woff2","fonts/poppins.woff2"],"fonts/poppins.woff2"],"./..\\fonts\\poppins.woff":[["poppins.462b1462.woff","fonts/poppins.woff"],"fonts/poppins.woff"],"./..\\fonts\\poppins-bold.woff2":[["poppins-bold.49767633.woff2","fonts/poppins-bold.woff2"],"fonts/poppins-bold.woff2"],"./..\\fonts\\poppins-bold.woff":[["poppins-bold.e7e7e085.woff","fonts/poppins-bold.woff"],"fonts/poppins-bold.woff"],"./..\\fonts\\poppins-600.woff2":[["poppins-600.efa69741.woff2","fonts/poppins-600.woff2"],"fonts/poppins-600.woff2"],"./..\\fonts\\poppins-600.woff":[["poppins-600.b25ef225.woff","fonts/poppins-600.woff"],"fonts/poppins-600.woff"],"./..\\fonts\\poppins-md.woff2":[["poppins-md.9072c028.woff2","fonts/poppins-md.woff2"],"fonts/poppins-md.woff2"],"./..\\fonts\\poppins-md.woff":[["poppins-md.54feb81e.woff","fonts/poppins-md.woff"],"fonts/poppins-md.woff"],"./..\\images\\background.png":[["background.0063873b.png","images/background.png"],"images/background.png"],"./..\\images\\undraw_adventure.svg":[["undraw_adventure.a775d132.svg","images/undraw_adventure.svg"],"images/undraw_adventure.svg"],"./..\\icons\\check-tick.png":[["check-tick.48a5bac0.png","icons/check-tick.png"],"icons/check-tick.png"],"./..\\icons\\wrong.svg":[["wrong.7f7ff515.svg","icons/wrong.svg"],"icons/wrong.svg"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./../fonts/poppins.woff2":[["poppins.34056999.woff2","fonts/poppins.woff2"],"fonts/poppins.woff2"],"./../fonts/poppins.woff":[["poppins.462b1462.woff","fonts/poppins.woff"],"fonts/poppins.woff"],"./../fonts/poppins-bold.woff2":[["poppins-bold.49767633.woff2","fonts/poppins-bold.woff2"],"fonts/poppins-bold.woff2"],"./../fonts/poppins-bold.woff":[["poppins-bold.e7e7e085.woff","fonts/poppins-bold.woff"],"fonts/poppins-bold.woff"],"./../fonts/poppins-600.woff2":[["poppins-600.efa69741.woff2","fonts/poppins-600.woff2"],"fonts/poppins-600.woff2"],"./../fonts/poppins-600.woff":[["poppins-600.b25ef225.woff","fonts/poppins-600.woff"],"fonts/poppins-600.woff"],"./../fonts/poppins-md.woff2":[["poppins-md.9072c028.woff2","fonts/poppins-md.woff2"],"fonts/poppins-md.woff2"],"./../fonts/poppins-md.woff":[["poppins-md.54feb81e.woff","fonts/poppins-md.woff"],"fonts/poppins-md.woff"],"./../images/background.png":[["background.0063873b.png","images/background.png"],"images/background.png"],"./../images/undraw_adventure.svg":[["undraw_adventure.a775d132.svg","images/undraw_adventure.svg"],"images/undraw_adventure.svg"],"./../icons/check-tick.png":[["check-tick.48a5bac0.png","icons/check-tick.png"],"icons/check-tick.png"],"./../icons/wrong.svg":[["wrong.7f7ff515.svg","icons/wrong.svg"],"icons/wrong.svg"],"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64134" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45665" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -393,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+},{}]},{},["../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
 //# sourceMappingURL=/_index.722ae79c.js.map

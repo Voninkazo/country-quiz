@@ -1,30 +1,30 @@
 {
-    "name": "country-quiz",
-    "version": "1.0.0",
-    "description": "Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:",
-    "main": "index.js",
-    "scripts": {
-        "start": "parcel webroot/index.html"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Voninkazo/country-quiz.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Voninkazo/country-quiz/issues"
-    },
-    "homepage": "https://github.com/Voninkazo/country-quiz#readme",
-    "dependencies": {
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
-        "react-router-dom": "^5.2.0"
-    },
-    "browserslist": [
-        "last 1 chrome version"
-    ],
-    "devDependencies": {
-        "sass": "^1.32.8"
-    }
+  "name": "country-quiz",
+  "version": "1.0.0",
+  "description": "Challenge: Create a country quiz app using an API, and use React to handle the frontend. Don’t look at the existing solution. Fulfill user stories below:",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel webroot/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Voninkazo/country-quiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Voninkazo/country-quiz/issues"
+  },
+  "homepage": "https://github.com/Voninkazo/country-quiz#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ],
+  "devDependencies": {
+    "sass": "^1.33.0"
+  }
 }

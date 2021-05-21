@@ -1,49 +1,46 @@
-import React from 'react';
+import React from 'react'
 
-import Questions from './Questions';
-import Answers from './Answers';
-import NextButton from './NextButton';
+import Questions from './Questions'
+import Answers from './Answers'
+import NextButton from './NextButton'
 
-function Quiz(
-    {
-    randomCountry,
-    numberOfTypesOfQuestion,
-    checkAnswer,
-    randomAnswerOptions,
-    disbledFieldset,
-    correctAnswer,
-    showNextBtn,
-    handleClickNext,
-    isCorrect,
-    fetchCountries,
-}
-) {
+function Quiz({
+  randomCountry,
+  numberOfTypesOfQuestion,
+  checkAnswer,
+  randomAnswerOptions,
+  disbledFieldset,
+  correctAnswer,
+  showNextBtn,
+  handleClickNext,
+  isCorrect,
+  fetchCountries,
+}) {
   return (
-   <section className="quiz-container">
-       <Questions 
-       randomCountry={randomCountry}
-       numberOfTypesOfQuestion={numberOfTypesOfQuestion}
-       />
+    <section className='quiz-container'>
+      <Questions
+        randomCountry={randomCountry}
+        numberOfTypesOfQuestion={numberOfTypesOfQuestion}
+      />
 
-       <Answers 
-       disbledFieldset={disbledFieldset}
-       randomAnswerOptions={randomAnswerOptions}
-       randomCountry={randomCountry}
-       checkAnswer={checkAnswer}
-       correctAnswer={correctAnswer}
-       />
-       {showNextBtn ? (
-        <NextButton 
-        handleClickNext={handleClickNext}
-        isCorrect={isCorrect}
-        fetchCountries={fetchCountries}
-        showNextBtn={showNextBtn}
+      <Answers
+        disbledFieldset={disbledFieldset}
+        randomAnswerOptions={randomAnswerOptions}
+        randomCountry={randomCountry}
+        checkAnswer={checkAnswer}
+        correctAnswer={correctAnswer}
+      />
+      {showNextBtn ? (
+        <NextButton
+          handleClickNext={handleClickNext}
+          isCorrect={isCorrect}
+          fetchCountries={fetchCountries}
+          showNextBtn={showNextBtn}
         />
-       )
-       :
-       ""
-       }
-   </section>
+      ) : (
+        ''
+      )}
+    </section>
   )
 }
 

@@ -29,6 +29,9 @@
 :root {
   --vertical-btn-padding: 1rem;
   --horizontal-btn-padding: 2rem;
+  --popup-button-color: #ffffff;
+  --default-bg-clor: #ffffff;
+  --hovered-text-color: #ffffff;
 }
 
 html {
@@ -45,37 +48,34 @@ body {
   height: 1090px;
 }
 
-h1 {
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 54px;
-  text-transform: uppercase;
-  color: #F2F2F2;
-  margin: 0;
-}
-
-h3 {
-  color: #1D355D;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 36px;
-}
-
-h4 {
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 72px;
-  color: #1D355D;
-  margin: 0;
-  padding-top: 40px;
-}
-
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 54px;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  margin: 0;
+}
+
+h3 {
+  color: #1d355d;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+h4 {
+  font-size: 48px;
+  line-height: 72px;
+  color: #1d355d;
+  margin: 0;
+  padding-top: 40px;
 }
 
 .container {
@@ -148,7 +148,7 @@ button {
 
 .btn-country,
 #button:hover {
-  background: #FFFFFF;
+  background: var(--default-bg-clor);
   border: 2px solid rgba(96, 102, 208, 0.7);
   box-sizing: border-box;
   border-radius: 12px;
@@ -166,8 +166,8 @@ button {
 }
 
 .btn-country:hover {
-  color: #FFFFFF;
-  background-color: #F9A826;
+  color: var(--hovered-text-color);
+  background-color: #f9a826;
   transition: 0.1s;
 }
 
@@ -179,7 +179,7 @@ button {
   font-weight: bold;
   font-size: 24px;
   line-height: 36px;
-  color: #2F527B;
+  color: #2f527b;
   margin: 0;
 }
 
@@ -190,7 +190,7 @@ button {
 }
 
 .popup {
-  background-color: white;
+  background-color: #ffffff;
   width: 400px;
   margin: auto;
   padding-bottom: 33px;
@@ -203,13 +203,13 @@ button {
   font-weight: normal;
   font-size: 18px;
   line-height: 27px;
-  color: #1D355D;
+  color: #1d355d;
   margin: 0;
   padding-bottom: 2rem;
 }
 
 .btn-next {
-  background: #F9A826;
+  background: #f9a826;
   box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
   border-radius: 12px;
   padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
@@ -218,34 +218,34 @@ button {
   font-weight: bold;
   font-size: 18px;
   line-height: 27px;
-  color: #FFFFFF;
+  color: var(--popup-button-color);
   align-self: flex-end;
 }
 
 .btn-try-again {
-  border: 2px solid #1D355D;
+  border: 2px solid #1d355d;
   box-sizing: border-box;
   border-radius: 12px;
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
-  color: #1D355D;
-  background-color: white;
+  color: #1d355d;
+  background-color: var(--default-bg-clor);
   margin-top: 40px;
   padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
 }
 
 .btn-try-again:hover {
-  background-color: #F9A826;
-  color: #FFFFFF;
+  background-color: #f9a826;
+  color: var(--hovered-text-color);
 }
 
 .btn-start {
   padding: var(--vertical-btn-padding) var(--horizontal-btn-padding);
   font-size: 18px;
   line-height: 27px;
-  color: #2F527B;
-  background-color: #FFFFFF;
+  color: #2f527b;
+  background-color: var(--default-bg-clor);
   border: none;
   border-radius: 6px;
   margin: auto;
@@ -262,7 +262,7 @@ b {
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 25px;
-  color: #FFFFFF;
+  color: #ffffff;
   box-sizing: border-box;
   border-radius: 12px;
   font-weight: 500;
@@ -283,7 +283,7 @@ b {
 .correct,
 #correct:hover {
   background-image: url(/check-tick.48a5bac0.png);
-  background-color: #60BF88;
+  background-color: #60bf88;
   cursor: default;
   border: none;
 }
@@ -291,7 +291,7 @@ b {
 .incorrect,
 #incorrect:hover {
   background-image: url(/wrong.7f7ff515.svg);
-  background-color: #EA8282;
+  background-color: #ea8282;
   cursor: default;
   border: none;
 }
