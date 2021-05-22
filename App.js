@@ -98,8 +98,6 @@ function App() {
     setIsFieldsetDisabled(false)
     setIsCorrect(false)
     setStartGame(true)
-    console.log('correct', isCorrect)
-    console.log('disable', isFieldsetDisabled)
     if (isCorrect) {
       setShowScore(false)
       fetchCountries()
