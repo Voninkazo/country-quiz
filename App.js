@@ -1,25 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import Header from './Components/Header'
-import PopupResults from './pages/PopupResult'
-import Quiz from './Components/Quiz'
+import Header from './components/Header'
+import Score from './components/Score'
+import Quiz from './components/Quiz'
+
+const payload = `https://restcountries.eu/rest/v2/all`
 
 function App() {
+  // initialize states
   const [countries, setCountries] = useState([])
   const [score, setScore] = useState(0)
   const [isCorrect, setIsCorrect] = useState(false)
   const [randomCountry, setRandomCountry] = useState({})
   const [randomAnswerOptions, setRandoAnswermOptions] = useState([])
-  const [disbledFieldset, setDisabledFieldset] = useState(false)
+  const [isFieldsetDisabled, setIsFieldsetDisabled] = useState(false)
   const [showNextBtn, setShowNextBtn] = useState(false)
-  const [showResults, setShowResults] = useState(false)
+  const [showScore, setShowScore] = useState(false)
   const [startGame, setStartGame] = useState(false)
   const [numberOfTypesOfQuestion, setNumOfTypesOfQuestion] = useState(0)
   const correctAnswer = useRef(null)
 
   // ftech the data from the API
   const fetchCountries = async () => {
-    const info = await fetch('https://restcountries.eu/rest/v2/all')
+    const info = await fetch(payload)
     const data = await info.json()
     setCountries(data)
     getRandomCountry()
@@ -28,34 +31,32 @@ function App() {
   // ************ GET RANDOM QUIZ QUESTIONS **************
 
   function getRandomCountry() {
-    // if the obj is empty, do not return anything
+    // if the object is empty, do not return anything
     if (!countries.length) return null
     // create the questions and answers from the array randomly
-    const randomNum = countries[Math.floor(Math.random() * countries.length)]
-    const firstRandomNum =
+    const country = countries[Math.floor(Math.random() * countries.length)]
+    const answerOption1 =
       countries[Math.floor(Math.random() * countries.length)]
-    const secondRandomNum =
+    const answerOption2 =
       countries[Math.floor(Math.random() * countries.length)]
-    const thirdRandomNum =
+    const answerOption3 =
       countries[Math.floor(Math.random() * countries.length)]
 
-    let randomOptions = [
-      firstRandomNum.name,
-      secondRandomNum.name,
-      randomNum.name,
-      thirdRandomNum.name,
+    let answerOptions = [
+      answerOption1.name,
+      answerOption2.name,
+      country.name,
+      answerOption3.name,
     ]
     // sort the array so that it would be more difficult to get the right answer
-    randomOptions.sort(() => {
+    answerOptions.sort(() => {
       return 0.5 - Math.random()
     })
 
-    setRandomCountry(randomNum)
-    setRandoAnswermOptions(randomOptions)
-    setIsCorrect('')
-    setDisabledFieldset(false)
+    setRandomCountry(country)
     setShowNextBtn(false)
-    setShowResults(false)
+    setIsFieldsetDisabled(false)
+    setRandoAnswermOptions(answerOptions)
   }
 
   // ******* HANDLE START BUTTON **********
@@ -67,14 +68,14 @@ function App() {
   //*******CHECK ANSWERS *************
   function checkAnswer(e) {
     e.preventDefault()
-    setDisabledFieldset(true)
+    setIsFieldsetDisabled(true)
     setShowNextBtn(true)
     const winCountry = randomCountry.name
-    const userGuesss = e.target.dataset.value
+    const chosenCountry = e.target.dataset.value
     const buttons = Array.from(document.querySelectorAll('.btn-country'))
-    buttons.forEach((button) => button.setAttribute('id', 'button'))
+    buttons.forEach((button) => button.classList.add('button'))
 
-    if (winCountry === userGuesss) {
+    if (winCountry === chosenCountry) {
       setIsCorrect(true)
       setScore((prev) => prev + 1)
       // change the className of the clicked button if it's the correct answer
@@ -94,9 +95,13 @@ function App() {
   // ********** HANDLE NEXT BUTTON *************
 
   function handleClickNext() {
+    setIsFieldsetDisabled(false)
+    setIsCorrect(false)
+    setStartGame(true)
+    console.log('correct', isCorrect)
+    console.log('disable', isFieldsetDisabled)
     if (isCorrect) {
-      setShowResults(false)
-      setDisabledFieldset(false)
+      setShowScore(false)
       fetchCountries()
       // grab a question random again and be able to change them from time to time
       setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
@@ -104,22 +109,23 @@ function App() {
       correctAnswer.current.className = 'btn-country'
     } else {
       // show result
-      setShowResults(true)
+      setShowScore(true)
     }
   }
 
   function handleBtnTryAgain() {
     setScore(0)
-    fetchCountries()
-    setShowResults(false)
+    setShowScore(false)
     setStartGame(true)
+    fetchCountries()
+    setIsFieldsetDisabled(false)
     setNumOfTypesOfQuestion(Math.floor(Math.random() * 3))
   }
 
   useEffect(() => {
+    setIsFieldsetDisabled(false)
     fetchCountries()
-    setIsCorrect('')
-    setDisabledFieldset(false)
+    setIsCorrect(false)
   }, [])
 
   return (
@@ -127,15 +133,15 @@ function App() {
       <Header />
       {startGame ? (
         <div>
-          {showResults ? (
-            <PopupResults score={score} handleBtnTryAgain={handleBtnTryAgain} />
+          {showScore ? (
+            <Score score={score} handleBtnTryAgain={handleBtnTryAgain} />
           ) : (
             <Quiz
               randomCountry={randomCountry}
               numberOfTypesOfQuestion={numberOfTypesOfQuestion}
               checkAnswer={checkAnswer}
               randomAnswerOptions={randomAnswerOptions}
-              disbledFieldset={disbledFieldset}
+              isFieldsetDisabled={isFieldsetDisabled}
               correctAnswer={correctAnswer}
               showNextBtn={showNextBtn}
               handleClickNext={handleClickNext}

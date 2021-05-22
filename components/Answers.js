@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Answers({
-  disbledFieldset,
+  isFieldsetDisabled,
   randomAnswerOptions,
   randomCountry,
   checkAnswer,
@@ -9,7 +9,7 @@ function Answers({
 }) {
   return (
     <form onClick={(e) => checkAnswer(e)}>
-      <fieldset disabled={disbledFieldset} className='btn-container'>
+      <fieldset disabled={isFieldsetDisabled} className='btn-container'>
         <button
           ref={
             randomAnswerOptions[0] === randomCountry.name ? correctAnswer : null

@@ -29566,7 +29566,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../Components/Header.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29583,7 +29583,7 @@ function Header() {
 }
 },{"react":"../node_modules/react/index.js"}],"images/winner.svg":[function(require,module,exports) {
 module.exports = "/winner.03831ed7.svg";
-},{}],"../pages/PopupResult.js":[function(require,module,exports) {
+},{}],"../components/Score.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29597,7 +29597,7 @@ var _winner = _interopRequireDefault(require("../webroot/images/winner.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function PopupResults({
+function Score({
   score,
   handleBtnTryAgain
 }) {
@@ -29606,16 +29606,16 @@ function PopupResults({
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _winner.default,
     alt: "img"
-  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
+  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct ", `${score > 1}` ? 'asnwers' : 'answer'), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: handleBtnTryAgain,
     className: "btn-try-again"
   }, "Try again"));
 }
 
-var _default = PopupResults;
+var _default = Score;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"../Components/Questions.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../webroot/images/winner.svg":"images/winner.svg"}],"../components/Questions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29641,7 +29641,7 @@ function Questions({
 
 var _default = Questions;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../Components/Answers.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../components/Answers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29654,7 +29654,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Answers({
-  disbledFieldset,
+  isFieldsetDisabled,
   randomAnswerOptions,
   randomCountry,
   checkAnswer,
@@ -29663,7 +29663,7 @@ function Answers({
   return /*#__PURE__*/_react.default.createElement("form", {
     onClick: e => checkAnswer(e)
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
-    disabled: disbledFieldset,
+    disabled: isFieldsetDisabled,
     className: "btn-container"
   }, /*#__PURE__*/_react.default.createElement("button", {
     ref: randomAnswerOptions[0] === randomCountry.name ? correctAnswer : null,
@@ -29694,7 +29694,7 @@ function Answers({
 
 var _default = Answers;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../Components/NextButton.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../components/NextButton.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29720,7 +29720,7 @@ function NextButton({
 
 var _default = NextButton;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"../Components/Quiz.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"../components/Quiz.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29743,7 +29743,7 @@ function Quiz({
   numberOfTypesOfQuestion,
   checkAnswer,
   randomAnswerOptions,
-  disbledFieldset,
+  isFieldsetDisabled,
   correctAnswer,
   showNextBtn,
   handleClickNext,
@@ -29756,7 +29756,7 @@ function Quiz({
     randomCountry: randomCountry,
     numberOfTypesOfQuestion: numberOfTypesOfQuestion
   }), /*#__PURE__*/_react.default.createElement(_Answers.default, {
-    disbledFieldset: disbledFieldset,
+    isFieldsetDisabled: isFieldsetDisabled,
     randomAnswerOptions: randomAnswerOptions,
     randomCountry: randomCountry,
     checkAnswer: checkAnswer,
@@ -29771,7 +29771,7 @@ function Quiz({
 
 var _default = Quiz;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Questions":"../Components/Questions.js","./Answers":"../Components/Answers.js","./NextButton":"../Components/NextButton.js"}],"../App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Questions":"../components/Questions.js","./Answers":"../components/Answers.js","./NextButton":"../components/NextButton.js"}],"../App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29781,11 +29781,11 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Header = _interopRequireDefault(require("./Components/Header"));
+var _Header = _interopRequireDefault(require("./components/Header"));
 
-var _PopupResult = _interopRequireDefault(require("./pages/PopupResult"));
+var _Score = _interopRequireDefault(require("./components/Score"));
 
-var _Quiz = _interopRequireDefault(require("./Components/Quiz"));
+var _Quiz = _interopRequireDefault(require("./components/Quiz"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29793,21 +29793,24 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+const payload = `https://restcountries.eu/rest/v2/all`;
+
 function App() {
+  // initialize states
   const [countries, setCountries] = (0, _react.useState)([]);
   const [score, setScore] = (0, _react.useState)(0);
   const [isCorrect, setIsCorrect] = (0, _react.useState)(false);
   const [randomCountry, setRandomCountry] = (0, _react.useState)({});
   const [randomAnswerOptions, setRandoAnswermOptions] = (0, _react.useState)([]);
-  const [disbledFieldset, setDisabledFieldset] = (0, _react.useState)(false);
+  const [isFieldsetDisabled, setIsFieldsetDisabled] = (0, _react.useState)(false);
   const [showNextBtn, setShowNextBtn] = (0, _react.useState)(false);
-  const [showResults, setShowResults] = (0, _react.useState)(false);
+  const [showScore, setShowScore] = (0, _react.useState)(false);
   const [startGame, setStartGame] = (0, _react.useState)(false);
   const [numberOfTypesOfQuestion, setNumOfTypesOfQuestion] = (0, _react.useState)(0);
   const correctAnswer = (0, _react.useRef)(null); // ftech the data from the API
 
   const fetchCountries = async () => {
-    const info = await fetch('https://restcountries.eu/rest/v2/all');
+    const info = await fetch(payload);
     const data = await info.json();
     setCountries(data);
     getRandomCountry();
@@ -29815,24 +29818,22 @@ function App() {
 
 
   function getRandomCountry() {
-    // if the obj is empty, do not return anything
+    // if the object is empty, do not return anything
     if (!countries.length) return null; // create the questions and answers from the array randomly
 
-    const randomNum = countries[Math.floor(Math.random() * countries.length)];
-    const firstRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    const secondRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    const thirdRandomNum = countries[Math.floor(Math.random() * countries.length)];
-    let randomOptions = [firstRandomNum.name, secondRandomNum.name, randomNum.name, thirdRandomNum.name]; // sort the array so that it would be more difficult to get the right answer
+    const country = countries[Math.floor(Math.random() * countries.length)];
+    const answerOption1 = countries[Math.floor(Math.random() * countries.length)];
+    const answerOption2 = countries[Math.floor(Math.random() * countries.length)];
+    const answerOption3 = countries[Math.floor(Math.random() * countries.length)];
+    let answerOptions = [answerOption1.name, answerOption2.name, country.name, answerOption3.name]; // sort the array so that it would be more difficult to get the right answer
 
-    randomOptions.sort(() => {
+    answerOptions.sort(() => {
       return 0.5 - Math.random();
     });
-    setRandomCountry(randomNum);
-    setRandoAnswermOptions(randomOptions);
-    setIsCorrect('');
-    setDisabledFieldset(false);
+    setRandomCountry(country);
     setShowNextBtn(false);
-    setShowResults(false);
+    setIsFieldsetDisabled(false);
+    setRandoAnswermOptions(answerOptions);
   } // ******* HANDLE START BUTTON **********
 
 
@@ -29844,14 +29845,14 @@ function App() {
 
   function checkAnswer(e) {
     e.preventDefault();
-    setDisabledFieldset(true);
+    setIsFieldsetDisabled(true);
     setShowNextBtn(true);
     const winCountry = randomCountry.name;
-    const userGuesss = e.target.dataset.value;
+    const chosenCountry = e.target.dataset.value;
     const buttons = Array.from(document.querySelectorAll('.btn-country'));
-    buttons.forEach(button => button.setAttribute('id', 'button'));
+    buttons.forEach(button => button.classList.add('button'));
 
-    if (winCountry === userGuesss) {
+    if (winCountry === chosenCountry) {
       setIsCorrect(true);
       setScore(prev => prev + 1); // change the className of the clicked button if it's the correct answer
 
@@ -29870,9 +29871,14 @@ function App() {
 
 
   function handleClickNext() {
+    setIsFieldsetDisabled(false);
+    setIsCorrect(false);
+    setStartGame(true);
+    console.log('correct', isCorrect);
+    console.log('disable', isFieldsetDisabled);
+
     if (isCorrect) {
-      setShowResults(false);
-      setDisabledFieldset(false);
+      setShowScore(false);
       fetchCountries(); // grab a question random again and be able to change them from time to time
 
       setNumOfTypesOfQuestion(Math.floor(Math.random() * 3)); // reset the className and set them into the default styles
@@ -29880,26 +29886,27 @@ function App() {
       correctAnswer.current.className = 'btn-country';
     } else {
       // show result
-      setShowResults(true);
+      setShowScore(true);
     }
   }
 
   function handleBtnTryAgain() {
     setScore(0);
-    fetchCountries();
-    setShowResults(false);
+    setShowScore(false);
     setStartGame(true);
+    fetchCountries();
+    setIsFieldsetDisabled(false);
     setNumOfTypesOfQuestion(Math.floor(Math.random() * 3));
   }
 
   (0, _react.useEffect)(() => {
+    setIsFieldsetDisabled(false);
     fetchCountries();
-    setIsCorrect('');
-    setDisabledFieldset(false);
+    setIsCorrect(false);
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), startGame ? /*#__PURE__*/_react.default.createElement("div", null, showResults ? /*#__PURE__*/_react.default.createElement(_PopupResult.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), startGame ? /*#__PURE__*/_react.default.createElement("div", null, showScore ? /*#__PURE__*/_react.default.createElement(_Score.default, {
     score: score,
     handleBtnTryAgain: handleBtnTryAgain
   }) : /*#__PURE__*/_react.default.createElement(_Quiz.default, {
@@ -29907,7 +29914,7 @@ function App() {
     numberOfTypesOfQuestion: numberOfTypesOfQuestion,
     checkAnswer: checkAnswer,
     randomAnswerOptions: randomAnswerOptions,
-    disbledFieldset: disbledFieldset,
+    isFieldsetDisabled: isFieldsetDisabled,
     correctAnswer: correctAnswer,
     showNextBtn: showNextBtn,
     handleClickNext: handleClickNext,
@@ -29922,7 +29929,7 @@ function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Components/Header":"../Components/Header.js","./pages/PopupResult":"../pages/PopupResult.js","./Components/Quiz":"../Components/Quiz.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/Header":"../components/Header.js","./components/Score":"../components/Score.js","./components/Quiz":"../components/Quiz.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29962,7 +29969,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45665" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44097" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

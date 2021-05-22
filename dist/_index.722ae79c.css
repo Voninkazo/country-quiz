@@ -147,8 +147,8 @@ button {
 }
 
 .btn-country,
-#button:hover {
-  background: var(--default-bg-clor);
+.button:hover {
+  background: #ffffff;
   border: 2px solid rgba(96, 102, 208, 0.7);
   box-sizing: border-box;
   border-radius: 12px;
@@ -276,12 +276,7 @@ b {
   gap: 46px;
 }
 
-#button {
-  cursor: default;
-}
-
-.correct,
-#correct:hover {
+.correct {
   background-image: url(/check-tick.48a5bac0.png);
   background-color: #60bf88;
   cursor: default;

@@ -9,7 +9,7 @@ function Quiz({
   numberOfTypesOfQuestion,
   checkAnswer,
   randomAnswerOptions,
-  disbledFieldset,
+  isFieldsetDisabled,
   correctAnswer,
   showNextBtn,
   handleClickNext,
@@ -24,7 +24,7 @@ function Quiz({
       />
 
       <Answers
-        disbledFieldset={disbledFieldset}
+        isFieldsetDisabled={isFieldsetDisabled}
         randomAnswerOptions={randomAnswerOptions}
         randomCountry={randomCountry}
         checkAnswer={checkAnswer}
