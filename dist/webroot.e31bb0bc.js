@@ -29606,7 +29606,7 @@ function Score({
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _winner.default,
     alt: "img"
-  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct ", `${score > 1}` ? 'asnwers' : 'answer'), /*#__PURE__*/_react.default.createElement("button", {
+  }), /*#__PURE__*/_react.default.createElement("h4", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", /*#__PURE__*/_react.default.createElement("b", null, score), " correct", ' ', `${score === 1 ? 'answer' : 'answers'} `), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     onClick: handleBtnTryAgain,
     className: "btn-try-again"
@@ -29874,8 +29874,6 @@ function App() {
     setIsFieldsetDisabled(false);
     setIsCorrect(false);
     setStartGame(true);
-    console.log('correct', isCorrect);
-    console.log('disable', isFieldsetDisabled);
 
     if (isCorrect) {
       setShowScore(false);
@@ -29969,7 +29967,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41753" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35573" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

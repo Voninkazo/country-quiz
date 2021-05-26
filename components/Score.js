@@ -7,7 +7,8 @@ function Score({ score, handleBtnTryAgain }) {
       <img src={WinnerImg} alt='img' />
       <h4>Results</h4>
       <p>
-        You got <b>{score}</b> correct {`${score > 1}` ? 'asnwers' : 'answer'}
+        You got <b>{score}</b> correct{' '}
+        {`${score === 1 ? 'answer' : 'answers'} `}
       </p>
       <button
         type='button'
