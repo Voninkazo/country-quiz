@@ -14,18 +14,17 @@
 
 ## Overview
 
-![screenshot](./assets/country-quiz.png)
-![screenshot](./assets/screenshot2.png)
-![screenshot](./assets/screenshot3.png)
-
+![screenshot](./assets/country_quiz_1.png)
+![screenshot](./assets/country_quiz_2.png)
+![screenshot](./assets/country_quiz_3.png)
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
--   [React](https://reactjs.org/)
--   [Sass]() 
--   [Jsx]()
+- [React](https://reactjs.org/)
+- [Sass]()
+- [Jsx]()
 
 ## Features
 
@@ -49,5 +48,5 @@ $ npm start
 ```
 
 ## Design
-[ https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1]( https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1)
 
+[ https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1](https://www.figma.com/file/Gw0ZNBbYN8asqFlZWy3jG1)
